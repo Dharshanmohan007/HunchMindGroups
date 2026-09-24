@@ -1,6 +1,4 @@
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import FeatureStrip from "../components/FeatureStrip";
 import Businesses from "../components/Businesses";
 import Statistics from "../components/Statistics";
 import About from "../components/About";
@@ -13,10 +11,8 @@ import Footer from "../components/Footer";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <main className="flex-grow">
         <Hero />
-        <FeatureStrip />
         <Businesses />
         <Statistics />
         <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 flex flex-col lg:flex-row gap-8 lg:items-center">
