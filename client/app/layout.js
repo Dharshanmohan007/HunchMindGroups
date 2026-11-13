@@ -1,4 +1,4 @@
-import { Inter, Playfair_Display, Caveat } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -6,28 +6,17 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-});
-
-const caveat = Caveat({
-  variable: "--font-caveat",
-  subsets: ["latin"],
-});
-
 export const metadata = {
-  title: "HunchMind Group | Ideas into Reality",
-  description: "A portfolio of businesses built to solve real-world problems through technology, craftsmanship and practical solutions.",
+  title: "HunchMind Group | Building AI Businesses for a More Efficient World",
+  description: "A technology group that creates, invests and scales data-driven businesses across supply chain, agriculture, commerce and beyond.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${playfair.variable} ${caveat.variable} h-full antialiased bg-warm-cream`}
-    >
-      <body className="min-h-full flex flex-col font-sans text-deep-navy">{children}</body>
+    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col font-sans bg-white text-[#102638] antialiased">
+        {children}
+      </body>
     </html>
   );
 }

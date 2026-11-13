@@ -1,115 +1,101 @@
 @import "tailwindcss";
 
 @theme {
-  --color-deep-navy: #08243D;
-  --color-dark-navy: #102A43;
-  --color-hm-green: #087A59;
-  --color-bright-green: #159A6A;
-  --color-forest-green: #005844;
-  --color-warm-cream: #FBF7ED;
-  --color-soft-ivory: #FFFDF8;
-  --color-light-cream: #F5F0E4;
-  --color-light-green: #EAF4EC;
-  --color-const-orange: #C85A24;
-  --color-warm-orange: #D96A2B;
-  --color-muted-text: #65727D;
-  --color-light-border: #E5DED0;
+  --color-primary-dark-teal: #005B62;
+  --color-deep-teal: #00474F;
+  --color-secondary-teal: #087D83;
+  --color-cyan-accent: #65DDE0;
+  --color-light-cyan: #DFF8F7;
+  --color-navy-text: #102638;
+  --color-secondary-text: #536573;
+  --color-light-bg: #F7FAFA;
+  --color-border-subtle: #E2ECEB;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
-  --font-hand: var(--font-caveat), cursive;
 }
 
 :root {
-  --background: var(--color-warm-cream);
-  --foreground: var(--color-deep-navy);
+  --background: #FFFFFF;
+  --foreground: #102638;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-}
-
-/* Custom Utilities and Animations */
-.text-balance {
-  text-wrap: balance;
+  overflow-x: hidden;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(0.8deg);
-  }
-}
-
+/* Custom Animations */
 @keyframes float-gentle {
   0%, 100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
   }
 }
 
-@keyframes pulse-ring {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(8, 127, 91, 0.45);
-  }
-  70% {
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
     transform: scale(1);
-    box-shadow: 0 0 0 14px rgba(8, 127, 91, 0);
   }
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(8, 127, 91, 0);
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
   }
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.animate-float {
-  animation: float-slow 6s ease-in-out infinite;
 }
 
 .animate-float-gentle {
   animation: float-gentle 4s ease-in-out infinite;
 }
 
-.animate-pulse-ring {
-  animation: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.animate-pulse-subtle {
+  animation: pulse-subtle 2.5s ease-in-out infinite;
 }
 
-.glass-pill {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+/* Scroll Animation Utilities */
+.reveal-init {
+  opacity: 0;
+  transition-property: opacity, transform, filter;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
-.glass-pill-dark {
-  background: rgba(8, 36, 61, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+.reveal-up {
+  transform: translateY(32px);
 }
 
-/* Force icons to turn crisp white on hover */
-.group:hover .w-14 svg,
-.group:hover .w-12 svg {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
+.reveal-down {
+  transform: translateY(-32px);
+}
+
+.reveal-left {
+  transform: translateX(-36px);
+}
+
+.reveal-right {
+  transform: translateX(36px);
+}
+
+.reveal-zoom {
+  transform: scale(0.92);
+}
+
+.reveal-active {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }

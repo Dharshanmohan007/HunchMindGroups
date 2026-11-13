@@ -1,31 +1,25 @@
-import Hero from "../components/Hero";
-import Businesses from "../components/Businesses";
-import Statistics from "../components/Statistics";
-import About from "../components/About";
-import Values from "../components/Values";
-import Insights from "../components/Insights";
-import Testimonials from "../components/Testimonials";
-import CTA from "../components/CTA";
-import Footer from "../components/Footer";
+import Header from "../components/layout/Header";
+import HeroSection from "../components/sections/HeroSection";
+import TrustedBusinesses from "../components/sections/TrustedBusinesses";
+import EcosystemSection from "../components/sections/EcosystemSection";
+import FocusAreas from "../components/sections/FocusAreas";
+import ImpactSection from "../components/sections/ImpactSection";
+import AboutSection from "../components/sections/AboutSection";
+import LatestInsights from "../components/sections/LatestInsights";
+import Footer from "../components/layout/Footer";
 
 export default function Home() {
   return (
     <>
+      <Header />
       <main className="flex-grow">
-        <Hero />
-        <Businesses />
-        <Statistics />
-        <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 flex flex-col lg:flex-row gap-8 lg:items-center">
-          <div className="flex-grow w-full">
-            <About />
-          </div>
-          <div className="lg:w-1/3 shrink-0 mb-20 lg:mb-0">
-            <Values />
-          </div>
-        </div>
-        <Insights />
-        <Testimonials />
-        <CTA />
+        <HeroSection />
+        <TrustedBusinesses />
+        <EcosystemSection />
+        <FocusAreas />
+        <ImpactSection />
+        <AboutSection />
+        <LatestInsights />
       </main>
       <Footer />
     </>
