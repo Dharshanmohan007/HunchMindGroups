@@ -48,7 +48,7 @@ export default function AboutSection() {
             <ScrollReveal direction="right" delay={200} className="w-full max-w-[550px] sm:max-w-[640px] md:max-w-[720px] lg:max-w-[920px] xl:max-w-[960px] mx-auto lg:mx-0 flex justify-center">
               <div className="relative w-full flex justify-center">
                 <Image
-                  src="/images/about-bg.png"
+                  src="/images/about-bgs.png"
                   alt="Logistics truck travelling through agricultural landscape during sunset"
                   width={1440}
                   height={640}
