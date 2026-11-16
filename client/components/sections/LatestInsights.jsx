@@ -8,6 +8,7 @@ export default function LatestInsights() {
   const blogs = [
     {
       title: "How AI is Transforming Agri Supply Chains",
+      desc: "Predictive routing and farm-to-retail cold chain visibility.",
       date: "Oct 20, 2026",
       image: "/images/blog-agriculture.jpg",
       category: "Agri-Tech AI",
@@ -16,6 +17,7 @@ export default function LatestInsights() {
     },
     {
       title: "Optimizing Logistics with Data Intelligence",
+      desc: "Real-time IoT telemetry, fleet scheduling and load optimization.",
       date: "Oct 12, 2026",
       image: "/images/blog-warehouse.jpg",
       category: "Supply Chain",
@@ -24,6 +26,7 @@ export default function LatestInsights() {
     },
     {
       title: "The Rise of AI in Commodity Markets",
+      desc: "Dynamic farmgate price discovery and market intelligence.",
       date: "Oct 05, 2026",
       image: "/images/blog-analytics.jpg",
       category: "Market Data",
@@ -33,7 +36,7 @@ export default function LatestInsights() {
   ];
 
   return (
-    <section id="blogs" className="pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 bg-[#FFFFFF] relative">
+    <section id="blogs" className="pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 bg-[#FAFAFA] relative">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
         
         {/* Section Header */}
@@ -64,10 +67,10 @@ export default function LatestInsights() {
         {/* 3 Horizontal Blog Cards (Compact size, minimized padding and image ratio matching user markup) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
           {blogs.map((blog, idx) => (
-            <ScrollReveal key={idx} direction="up" delay={idx * 120}>
+            <ScrollReveal key={idx} direction="up" delay={idx * 120} className="flex justify-center w-full">
               <a
                 href={blog.href}
-                className="bg-white rounded-[22px] sm:rounded-[24px] overflow-hidden border border-[#E2ECEB] shadow-[0_6px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_35px_rgba(0,91,98,0.10)] transition-all duration-400 hover:-translate-y-1.5 flex flex-col h-full group cursor-pointer"
+                className="bg-white rounded-[10px] sm:rounded-[10px] overflow-hidden border border-[#E2ECEB] shadow-[0_6px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_35px_rgba(0,91,98,0.10)] transition-all duration-400 hover:-translate-y-1.5 flex flex-col h-full w-full sm:max-w-[360px] md:max-w-none mx-auto group cursor-pointer"
               >
                 {/* Minimized Image Container Ratio */}
                 <div className="relative h-36 sm:h-40 w-full overflow-hidden bg-slate-100 shrink-0">
@@ -100,9 +103,12 @@ export default function LatestInsights() {
                     </h3>
                   </div>
 
-                  {/* Circular Navigation Button (Compact footer matching ecosystem cards) */}
-                  <div className="pt-2 border-t border-[#F0F5F5] flex items-center justify-end">
-                    <div className="w-8 h-8 rounded-full bg-[#F7FAFA] group-hover:bg-[#005B62] text-[#005B62] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-xs group-hover:rotate-45">
+                  {/* Description and Arrow Button in a SINGLE LINE */}
+                  <div className="flex items-center justify-between gap-3 pt-2 mt-auto border-t border-[#F0F5F5]">
+                    <p className="text-xs sm:text-[13px] text-[#536573] leading-snug font-normal line-clamp-2 flex-grow">
+                      {blog.desc}
+                    </p>
+                    <div className="w-8 h-8 rounded-full bg-[#F7FAFA] group-hover:bg-[#005B62] text-[#005B62] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300 shadow-xs group-hover:rotate-45">
                       <ArrowUpRight size={15} strokeWidth={2.2} />
                     </div>
                   </div>

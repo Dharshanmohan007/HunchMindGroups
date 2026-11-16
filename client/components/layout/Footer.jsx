@@ -42,7 +42,7 @@ export default function Footer() {
     <footer id="contact" className="relative w-full bg-[#00363C] text-white overflow-hidden">
       
       {/* Top Wave Border of Footer (Exact multi-layered wave matching reference image 2) */}
-      <div className="relative w-full overflow-hidden leading-none z-10 pointer-events-none -mt-[1px] bg-white">
+      <div className="relative w-full overflow-hidden leading-none z-10 pointer-events-none -mt-[1px] bg-[#FAFAFA]">
         <svg
           viewBox="0 0 1440 80"
           fill="none"
@@ -76,10 +76,10 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 pt-6 md:pt-8 pb-8 relative z-20">
         
         {/* Main Row: Logo/Tagline | Quick Links | Subscribe Input */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 items-center justify-between pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 items-start lg:items-center justify-between pb-8">
           
-          {/* Col 1: Logo & Tagline (5 cols) */}
-          <div className="md:col-span-5 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
+          {/* Col 1: Logo & Tagline (Full width on tablet, 5 cols on desktop) */}
+          <div className="md:col-span-2 lg:col-span-5 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 w-full">
             {/* Logo Mark + Brand Name */}
             <a href="#" className="flex items-center gap-2.5 group shrink-0">
               <div className="w-8 h-8 flex items-center justify-center shrink-0">
@@ -102,27 +102,26 @@ export default function Footer() {
             <div className="hidden sm:block h-8 w-[1px] bg-white/20" />
 
             {/* Tagline */}
-            <div className="text-xs sm:text-[13px] text-white/90 leading-snug font-normal max-w-[200px]">
-              AI Businesses for a<br />
-              More Efficient World.
+            <div className="text-xs sm:text-[13px] text-white/90 leading-snug font-normal w-full sm:max-w-[240px]">
+              AI Businesses for a More Efficient World.
             </div>
           </div>
 
-          {/* Col 2: Quick Links in 2 clean horizontal rows (4 cols) */}
-          <div className="md:col-span-3 lg:col-span-4">
-            <h4 className="text-xs font-semibold text-white tracking-wide mb-2.5">
+          {/* Col 2: Quick Links (1 col on tablet, 4 cols on desktop; evenly spaced across mobile) */}
+          <div className="md:col-span-1 lg:col-span-4 w-full">
+            <h4 className="text-xs font-semibold text-white tracking-wide mb-3">
               Quick Links
             </h4>
-            <div className="space-y-1.5 text-xs sm:text-[13px] font-medium text-white/85">
-              {/* Row 1 */}
-              <div className="flex items-center gap-4 sm:gap-5">
+            <div className="space-y-2 text-xs sm:text-[13px] font-medium text-white/85 w-full">
+              {/* Row 1: Evenly spaced across mobile */}
+              <div className="flex items-center justify-between sm:justify-start gap-3 sm:gap-5 w-full">
                 <a href="#" className="hover:text-[#65DDE0] transition-colors">Home</a>
                 <a href="#about" className="hover:text-[#65DDE0] transition-colors">About</a>
                 <a href="#ecosystem" className="hover:text-[#65DDE0] transition-colors">Products</a>
                 <a href="#partners" className="hover:text-[#65DDE0] transition-colors">Clients</a>
               </div>
-              {/* Row 2 */}
-              <div className="flex items-center gap-4 sm:gap-5">
+              {/* Row 2: Evenly spaced across mobile */}
+              <div className="flex items-center justify-between sm:justify-start gap-4 sm:gap-5 max-w-[280px] sm:max-w-none">
                 <a href="#focus" className="hover:text-[#65DDE0] transition-colors">Network</a>
                 <a href="#impact" className="hover:text-[#65DDE0] transition-colors">Achievements</a>
                 <a href="#blogs" className="hover:text-[#65DDE0] transition-colors">Blogs</a>
@@ -130,9 +129,9 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 3: Subscribe for Updates with Sleek Cyan-Button Pill Input (3 cols / 4 cols) */}
-          <div className="md:col-span-4 lg:col-span-3">
-            <h4 className="text-xs font-semibold text-white tracking-wide mb-2.5">
+          {/* Col 3: Subscribe for Updates (1 col on tablet, 3 cols on desktop) */}
+          <div className="md:col-span-1 lg:col-span-3 w-full">
+            <h4 className="text-xs font-semibold text-white tracking-wide mb-3">
               Subscribe for Updates
             </h4>
 
@@ -142,14 +141,14 @@ export default function Footer() {
                 <span>Subscribed successfully!</span>
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} className="relative">
+              <form onSubmit={handleSubscribe} className="relative w-full">
                 <div className="relative flex items-center bg-[#00262B]/70 backdrop-blur-md rounded-full border border-white/20 h-10 sm:h-11 pl-4 pr-1.5 w-full focus-within:border-[#65DDE0] transition-colors">
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="bg-transparent text-xs text-white placeholder-white/50 focus:outline-none flex-grow pr-2"
+                    className="bg-transparent text-xs text-white placeholder-white/50 focus:outline-none flex-grow pr-2 w-full"
                   />
                   <button
                     type="submit"
@@ -172,16 +171,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom Row: Copyright + Legal + Social Icons */}
-        <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
+        <div className="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60 w-full text-center sm:text-left">
           
           {/* Copyright */}
           <div>
             © 2026 HunchMind Group. All rights reserved.
           </div>
 
-          {/* Legal Links & Socials */}
-          <div className="flex items-center gap-6 flex-wrap">
-            <div className="flex items-center gap-3 text-white/70">
+          {/* Legal Links & Socials (Evenly balanced across mobile) */}
+          <div className="flex items-center justify-between sm:justify-end gap-4 sm:gap-6 flex-wrap w-full sm:w-auto">
+            <div className="flex items-center justify-center gap-3 text-white/70">
               <a href="#" className="hover:text-white transition-colors">Privacy</a>
               <span>|</span>
               <a href="#" className="hover:text-white transition-colors">Terms</a>
@@ -190,7 +189,7 @@ export default function Footer() {
             </div>
 
             {/* Social Icons */}
-            <div className="flex items-center gap-3 pl-2 sm:pl-4 sm:border-l border-white/15">
+            <div className="flex items-center justify-center gap-3.5 pl-0 sm:pl-4 sm:border-l border-white/15">
               <a
                 href="https://linkedin.com"
                 target="_blank"

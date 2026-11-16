@@ -53,7 +53,7 @@ export default function EcosystemSection() {
   ];
 
   return (
-    <section id="ecosystem" className="pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 bg-[#FFFFFF] relative">
+    <section id="ecosystem" className="pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 bg-[#FAFAFA] relative">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
         
         {/* Section Header (Compact spacing matching user markup) */}
@@ -86,10 +86,10 @@ export default function EcosystemSection() {
           {businesses.map((biz, idx) => {
             const Icon = biz.icon;
             return (
-              <ScrollReveal key={idx} direction="up" delay={idx * 100}>
+              <ScrollReveal key={idx} direction="up" delay={idx * 100} className="flex justify-center w-full">
                 <a
                   href={biz.href}
-                  className={`bg-white rounded-[22px] sm:rounded-[24px] overflow-hidden border border-[#E2ECEB] shadow-[0_6px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_35px_rgba(0,91,98,0.10)] transition-all duration-400 hover:-translate-y-1.5 flex flex-col h-full group ${biz.accentBorder} cursor-pointer`}
+                  className={`bg-white rounded-[10px] sm:rounded-[10px] overflow-hidden border border-[#E2ECEB] shadow-[0_6px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_35px_rgba(0,91,98,0.10)] transition-all duration-400 hover:-translate-y-1.5 flex flex-col h-full w-full sm:max-w-[340px] md:max-w-[360px] lg:max-w-none mx-auto group ${biz.accentBorder} cursor-pointer`}
                 >
                   {/* Minimized Image Container Ratio */}
                   <div className="relative h-36 sm:h-40 w-full overflow-hidden bg-slate-100 shrink-0">
@@ -108,28 +108,24 @@ export default function EcosystemSection() {
                     </span>
                   </div>
 
-                  {/* Compact Card Body (Minimal padding & tight internal spacing) */}
+                  {/* Compact Card Body */}
                   <div className="p-4 sm:p-4.5 flex flex-col justify-between flex-grow">
-                    <div>
-                      {/* Identity Icon & Brand Name */}
-                      <div className="flex items-center gap-2.5 mb-2">
-                        <div className={`w-8 h-8 rounded-lg ${biz.iconBg} ${biz.iconColor} flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform`}>
-                          <Icon size={16} strokeWidth={2.2} />
-                        </div>
-                        <h3 className="font-sans font-bold text-[16px] sm:text-[17px] text-[#102638] group-hover:text-[#005B62] transition-colors leading-tight">
-                          {biz.name}
-                        </h3>
+                    {/* Identity Icon & Brand Name */}
+                    <div className="flex items-center gap-2.5 mb-2">
+                      <div className={`w-8 h-8 rounded-lg ${biz.iconBg} ${biz.iconColor} flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform`}>
+                        <Icon size={16} strokeWidth={2.2} />
                       </div>
-
-                      {/* Description */}
-                      <p className="text-xs sm:text-[13px] text-[#536573] leading-snug mb-3 font-normal">
-                        {biz.tagline}
-                      </p>
+                      <h3 className="font-sans font-bold text-[16px] sm:text-[17px] text-[#102638] group-hover:text-[#005B62] transition-colors leading-tight">
+                        {biz.name}
+                      </h3>
                     </div>
 
-                    {/* Circular Navigation Button (Explore Platform text removed as requested) */}
-                    <div className="pt-2 border-t border-[#F0F5F5] flex items-center justify-end">
-                      <div className="w-8 h-8 rounded-full bg-[#F7FAFA] group-hover:bg-[#005B62] text-[#005B62] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-xs group-hover:rotate-45">
+                    {/* Description and Arrow Button in a SINGLE LINE */}
+                    <div className="flex items-center justify-between gap-3 pt-2 mt-auto border-t border-[#F0F5F5]">
+                      <p className="text-xs sm:text-[13px] text-[#536573] leading-snug font-normal line-clamp-2 flex-grow">
+                        {biz.tagline}
+                      </p>
+                      <div className="w-8 h-8 rounded-full bg-[#F7FAFA] group-hover:bg-[#005B62] text-[#005B62] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300 shadow-xs group-hover:rotate-45">
                         <ArrowUpRight size={15} strokeWidth={2.2} />
                       </div>
                     </div>

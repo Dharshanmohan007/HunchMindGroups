@@ -75,13 +75,13 @@ export default function ImpactSection() {
   const activeStat = stats[activeStatIndex];
 
   return (
-    <section id="impact" className="py-6 sm:py-8 md:py-10 bg-[#FFFFFF] relative">
+    <section id="impact" className="py-6 sm:py-8 md:py-10 bg-[#FAFAFA] relative">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
         <ScrollReveal direction="up" delay={150}>
           
           {/* THE OUR IMPACT CONTAINER:
               Default state: Exact height & width matching reference image (min-h-[175px])
-              Hover state: Expands smoothly to min-h-[420px] and displays detailed content
+              Hover state: Full visibility across mobile, tab (stacked vertically), and desktop (side-by-side)
           */}
           <div
             onMouseEnter={() => setIsHovered(true)}
@@ -89,10 +89,10 @@ export default function ImpactSection() {
               setIsHovered(false);
               setActiveStatIndex(0);
             }}
-            className={`group relative w-full rounded-[28px] sm:rounded-[34px] md:rounded-[38px] overflow-hidden border border-[#005B62]/40 shadow-[0_20px_50px_rgba(0,35,45,0.16)] transition-all duration-700 ease-in-out cursor-default ${
+            className={`group relative w-full rounded-[28px] sm:rounded-[34px] md:rounded-[38px] overflow-hidden border border-[#005B62]/40 shadow-[0_20px_50px_rgba(0,35,45,0.16)] transition-all duration-500 ease-in-out cursor-default ${
               isHovered
-                ? "min-h-[460px] md:min-h-[420px] lg:min-h-[430px] shadow-[0_28px_70px_rgba(0,35,45,0.28)]"
-                : "min-h-[175px] md:min-h-[182px]"
+                ? "h-auto min-h-[510px] sm:min-h-[480px] md:min-h-[470px] lg:h-[390px] shadow-[0_28px_70px_rgba(0,35,45,0.28)]"
+                : "min-h-[175px] md:h-[182px]"
             }`}
           >
             
@@ -104,34 +104,58 @@ export default function ImpactSection() {
                 fill
                 priority
                 sizes="100vw"
-                className={`object-cover object-right sm:object-[85%_center] transition-transform duration-1000 ease-out ${
+                className={`object-cover object-[right_36%] sm:object-[86%_36%] md:object-[88%_36%] transition-transform duration-1000 ease-out ${
                   isHovered ? "scale-105" : "scale-100"
                 }`}
               />
 
-              {/* Left Deep Teal Gradient Overlay:
-                  Covers left ~55% with opaque deep teal for crisp readability,
-                  smoothly transitioning to transparent on the right so the mountain photo shines through.
+              {/* Center Color Transition Gradient Overlay:
+                  Matches the original UI reference (Image 1):
+                  - Rich, crisp deep teal (#015863 / rgb(1,88,99)) on the left.
+                  - Soft, ultra-gradual dissolution across 35% -> 85% into the mountain sky/mist.
+                  - Zero harsh vertical cutoff or dark stripe.
               */}
+              {/* Normal Phase Overlay */}
               <div
+                style={{
+                  background:
+                    "linear-gradient(90deg, #015863 0%, #015863 32%, rgba(1, 88, 99, 0.96) 42%, rgba(1, 92, 103, 0.82) 52%, rgba(1, 96, 108, 0.60) 62%, rgba(1, 100, 112, 0.35) 72%, rgba(1, 104, 115, 0.12) 84%, rgba(1, 104, 115, 0) 95%)",
+                }}
                 className={`absolute inset-0 transition-opacity duration-700 ${
-                  isHovered
-                    ? "bg-gradient-to-r from-[#00383E]/98 via-[#00474F]/92 via-55% to-[#00474F]/40"
-                    : "bg-gradient-to-r from-[#00424A] via-[#00474F] via-45% to-transparent"
+                  isHovered ? "opacity-0 pointer-events-none" : "opacity-100"
                 }`}
               />
 
-              {/* Subtle top & bottom vignette */}
-              <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#002C32]/30 to-transparent pointer-events-none" />
-              <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-[#002C32]/40 to-transparent pointer-events-none" />
+              {/* Hover Phase Overlay: Deep teal background covering the expanded layout */}
+              <div
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(1, 75, 85, 0.98) 0%, rgba(1, 88, 99, 0.94) 52%, rgba(1, 96, 108, 0.65) 75%, rgba(1, 104, 115, 0.35) 100%)",
+                }}
+                className={`absolute inset-0 transition-opacity duration-700 ${
+                  isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
+                }`}
+              />
+
+              {/* Subtle top & bottom vignette: Active only when expanded to frame the card */}
+              <div
+                className={`absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#002C32]/30 to-transparent pointer-events-none transition-opacity duration-500 ${
+                  isHovered ? "opacity-100" : "opacity-0"
+                }`}
+              />
+              <div
+                className={`absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-[#002C32]/30 to-transparent pointer-events-none transition-opacity duration-500 ${
+                  isHovered ? "opacity-100" : "opacity-0"
+                }`}
+              />
             </div>
 
-            {/* Inner Content Area */}
-            <div className="relative z-10 p-6 sm:p-7 md:p-9 lg:p-10 flex flex-col justify-between h-full">
+            {/* Inner Content Area - Full height with snug, balanced vertical padding */}
+            <div className="relative z-10 p-5 sm:p-6 md:px-8 md:py-6 lg:px-9 lg:py-6 flex flex-col justify-between h-full">
               
               {/* Top Row: Label & Micro-Indicator */}
               <div>
-                <div className="flex items-center justify-between mb-4 sm:mb-5">
+                <div className="flex items-center justify-between mb-3">
                   {/* Top-Left Label: Dash + "OUR IMPACT" (Clean White) */}
                   <div className="flex items-center gap-2.5">
                     <span className="w-5 sm:w-6 h-[2px] bg-white rounded-full inline-block" />
@@ -139,16 +163,6 @@ export default function ImpactSection() {
                       OUR IMPACT
                     </span>
                   </div>
-
-                  {/* Micro Hint (White text instead of pale green) */}
-                  {/* <div
-                    className={`hidden sm:flex items-center gap-1.5 text-[11px] text-white/90 font-medium transition-opacity duration-300 ${
-                      isHovered ? "opacity-0 pointer-events-none" : "opacity-100"
-                    }`}
-                  >
-                    <span>Hover to explore details</span>
-                    <span className="animate-pulse">↓</span>
-                  </div> */}
                 </div>
 
                 {/* The 4 Statistics Strip */}
@@ -206,46 +220,52 @@ export default function ImpactSection() {
               </div>
 
               {/* EXPANDED CONTENT AREA:
-                  Displays when hovered, with rich details, description, and capability highlights
+                  Ample vertical expansion for mobile/tablet (vertical stack) and uniform compact height on desktop
               */}
               <div
                 className={`transition-all duration-500 ease-out overflow-hidden ${
                   isHovered
-                    ? "opacity-100 max-h-[320px] mt-8 pt-6 border-t border-white/15"
+                    ? "opacity-100 max-h-[650px] lg:max-h-[290px] mt-4 pt-4 border-t border-white/15"
                     : "opacity-0 max-h-0 mt-0 pt-0 pointer-events-none"
                 }`}
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-center">
                   
-                  {/* Left Column: Heading, Tagline & Detailed Paragraph (7 cols) */}
-                  <div className="lg:col-span-7">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-white text-[11px] font-bold tracking-wider uppercase mb-2.5">
+                  {/* Left Column: Heading & description containers */}
+                  <div className="lg:col-span-7 flex flex-col justify-center">
+                    <div className="h-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-white text-[11px] font-bold tracking-wider uppercase mb-1.5 w-fit">
                       <Sparkles size={12} className="text-white" />
                       <span>{activeStat.tag}</span>
                     </div>
 
-                    <h3 className="font-serif text-xl sm:text-2xl md:text-[26px] text-white font-bold tracking-tight mb-2">
-                      {activeStat.heading}{" "}
-                      <span className="text-white font-normal italic font-serif">
-                        {activeStat.tagline}
-                      </span>
-                    </h3>
+                    {/* Headline container with uniform min-height on desktop */}
+                    <div className="min-h-0 lg:min-h-[52px] flex items-center mb-1">
+                      <h3 className="font-serif text-lg sm:text-xl md:text-[23px] text-white font-bold tracking-tight leading-snug">
+                        {activeStat.heading}{" "}
+                        <span className="text-white font-normal italic font-serif">
+                          {activeStat.tagline}
+                        </span>
+                      </h3>
+                    </div>
 
-                    <p className="text-xs sm:text-sm text-white/85 font-light leading-relaxed max-w-xl">
-                      {activeStat.desc}
-                    </p>
+                    {/* Description container with uniform min-height on desktop */}
+                    <div className="min-h-0 lg:min-h-[46px] flex items-start">
+                      <p className="text-xs sm:text-[13px] text-white/85 font-light leading-relaxed max-w-xl">
+                        {activeStat.desc}
+                      </p>
+                    </div>
                   </div>
 
-                  {/* Right Column: Key Highlights Frosted Card (5 cols) */}
-                  <div className="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 shadow-lg">
-                    <div className="text-[11px] font-bold text-white uppercase tracking-wider mb-3 flex items-center justify-between">
+                  {/* Right Column: Frosted card fully visible on mobile & tab without cutoff */}
+                  <div className="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-4.5 border border-white/20 shadow-lg h-auto min-h-[140px] lg:h-[155px] flex flex-col justify-between gap-2.5">
+                    <div className="text-[11px] font-bold text-white uppercase tracking-wider mb-1 flex items-center justify-between">
                       <span>Core Capabilities</span>
                       <span className="text-[10px] text-white/60 font-normal">Active Metric</span>
                     </div>
 
-                    <div className="space-y-2.5">
+                    <div className="space-y-2 sm:space-y-2.5 flex-grow flex flex-col justify-around">
                       {activeStat.highlights.map((h, i) => (
-                        <div key={i} className="flex items-start gap-2.5 text-xs text-white/95">
+                        <div key={i} className="flex items-start gap-2.5 text-xs text-white/95 leading-tight">
                           <CheckCircle2 size={15} className="text-white shrink-0 mt-0.5" />
                           <span className="leading-snug">{h}</span>
                         </div>
@@ -255,8 +275,8 @@ export default function ImpactSection() {
 
                 </div>
 
-                {/* Bottom Interactive Quick-Tabs Strip */}
-                <div className="mt-5 pt-3.5 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-white/70">
+                {/* Bottom Interactive Quick-Tabs Strip (locked to the bottom) */}
+                {/* <div className="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-white/70">
                   <div className="flex items-center gap-2">
                     <span className="text-[11px] text-white/60">Switch preview:</span>
                     {stats.map((s, idx) => (
@@ -285,7 +305,7 @@ export default function ImpactSection() {
                   <span className="text-[11px] text-white/80 hidden md:inline-block">
                     Move mouse away to collapse
                   </span>
-                </div>
+                </div> */}
 
               </div>
 

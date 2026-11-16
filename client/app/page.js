@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="flex-grow">
+      <main className="flex-grow bg-[#FAFAFA]">
         <HeroSection />
         <TrustedBusinesses />
         <EcosystemSection />

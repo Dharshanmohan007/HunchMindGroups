@@ -23,7 +23,7 @@ export default function HeroSection() {
       {/* Background Image Container (Exact Agricultural Farm at Sunset with Parallel Rows of Crops) */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-agriculture-v2.jpg"
+          src="/images/hero-bg.png"
           alt="Sunset over green agricultural crop rows with mountains"
           fill
           priority
@@ -116,7 +116,7 @@ export default function HeroSection() {
         {/* Right Column: Floating Information Card (semi-transparent frosted glass, adjusted lower) */}
         <div className="w-full lg:w-auto lg:ml-auto flex justify-start sm:justify-end self-start mt-6 sm:mt-8 lg:mt-12 xl:mt-16">
           <ScrollReveal direction="right" delay={350} className="w-full sm:w-auto">
-            <div className="w-full sm:w-[295px] md:w-[310px] bg-white/65 backdrop-blur-md rounded-[24px] p-5 sm:p-5.5 shadow-[0_16px_40px_rgba(0,0,0,0.16)] border border-white/45">
+            <div className="w-full sm:w-[295px] md:w-[310px] bg-white/65 backdrop-blur-md rounded-[20px] p-5 sm:p-5.5 shadow-[0_16px_40px_rgba(0,0,0,0.16)] border border-white/45">
               
               {/* Card Header with Sprout/Leaf Icon */}
               <div className="flex items-center gap-3 mb-4 sm:mb-4.5">
@@ -177,10 +177,10 @@ export default function HeroSection() {
             opacity="0.85"
           />
 
-          {/* Layer 3: Main White Wave with Center Crest */}
+          {/* Layer 3: Main Light Gray Wave (#FAFAFA) blending seamlessly into page body */}
           <path
             d="M 0,138 C 180,135 380,130 580,106 C 720,88 840,80 980,100 C 1140,120 1300,134 1440,138 L 1440,180 L 0,180 Z"
-            fill="#FFFFFF"
+            fill="#FAFAFA"
           />
 
           <defs>

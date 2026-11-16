@@ -33,7 +33,7 @@ export default function FocusAreas() {
   ];
 
   return (
-    <section id="focus" className="py-6 sm:py-8 md:py-10 bg-[#FFFFFF] relative border-y border-[#E2ECEB]/40">
+    <section id="focus" className="py-6 sm:py-8 md:py-10 bg-[#FAFAFA] relative border-y border-[#E2ECEB]/40">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
         
         {/* Section Header */}
@@ -54,7 +54,7 @@ export default function FocusAreas() {
 
         {/* 5 Focus Areas Container */}
         <ScrollReveal direction="up" delay={200}>
-          <div className="bg-white rounded-[32px] border border-[#E2ECEB] p-6 sm:p-8 md:p-10 shadow-[0_15px_40px_rgba(0,35,45,0.05)]">
+          <div className="bg-white rounded-[10px] border border-[#E2ECEB] p-6 sm:p-8 md:p-10 shadow-[0_15px_40px_rgba(0,35,45,0.05)]">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-0 divide-y sm:divide-y-0 lg:divide-x divide-[#E2ECEB]">
               {areas.map((area, idx) => {
                 const Icon = area.icon;
@@ -66,7 +66,7 @@ export default function FocusAreas() {
                     }`}
                   >
                     {/* Outline Icon Container */}
-                    <div className="w-14 h-14 rounded-2xl bg-[#DFF8F7]/70 border border-[#65DDE0]/30 flex items-center justify-center mb-4 group-hover:bg-[#005B62] transition-colors duration-300 shadow-xs">
+                    <div className="w-14 h-14 rounded-xl bg-[#DFF8F7]/70 border border-[#65DDE0]/30 flex items-center justify-center mb-4 group-hover:bg-[#005B62] transition-colors duration-300 shadow-xs">
                       <Icon
                         size={26}
                         strokeWidth={1.8}
