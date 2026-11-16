@@ -33,18 +33,18 @@ export default function LatestInsights() {
   ];
 
   return (
-    <section id="blogs" className="py-20 md:py-32 bg-[#FFFFFF] relative">
+    <section id="blogs" className="pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 bg-[#FFFFFF] relative">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 gap-4">
           <ScrollReveal direction="left">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DFF8F7] text-xs font-bold tracking-[0.25em] text-[#005B62] mb-3 uppercase">
-                <Sparkles size={13} className="text-[#087D83]" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#DFF8F7] text-[11px] font-bold tracking-[0.25em] text-[#005B62] mb-2 uppercase">
+                <Sparkles size={12} className="text-[#087D83]" />
                 <span>From Our Blogs</span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#102638] font-bold tracking-tight">
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#102638] font-bold tracking-tight">
                 Latest Insights
               </h2>
             </div>
@@ -53,24 +53,24 @@ export default function LatestInsights() {
           <ScrollReveal direction="right">
             <a
               href="#blogs"
-              className="group inline-flex items-center gap-2 text-[#005B62] hover:text-[#00474F] font-semibold text-sm md:text-base transition-colors pb-1 border-b-2 border-transparent hover:border-[#005B62] cursor-pointer"
+              className="group inline-flex items-center gap-1.5 text-[#005B62] hover:text-[#00474F] font-semibold text-xs sm:text-sm transition-colors pb-0.5 border-b border-transparent hover:border-[#005B62] cursor-pointer"
             >
               <span>View All Blogs</span>
-              <ArrowRight size={17} className="transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </ScrollReveal>
         </div>
 
-        {/* 3 Horizontal Blog Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        {/* 3 Horizontal Blog Cards (Compact size, minimized padding and image ratio matching user markup) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
           {blogs.map((blog, idx) => (
-            <ScrollReveal key={idx} direction="up" delay={idx * 150}>
+            <ScrollReveal key={idx} direction="up" delay={idx * 120}>
               <a
                 href={blog.href}
-                className="bg-white rounded-[26px] overflow-hidden border border-[#E2ECEB] shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_45px_rgba(0,91,98,0.12)] transition-all duration-400 hover:-translate-y-2 flex flex-col h-full group cursor-pointer"
+                className="bg-white rounded-[22px] sm:rounded-[24px] overflow-hidden border border-[#E2ECEB] shadow-[0_6px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_35px_rgba(0,91,98,0.10)] transition-all duration-400 hover:-translate-y-1.5 flex flex-col h-full group cursor-pointer"
               >
-                {/* Image */}
-                <div className="relative h-52 sm:h-56 w-full overflow-hidden bg-slate-100">
+                {/* Minimized Image Container Ratio */}
+                <div className="relative h-36 sm:h-40 w-full overflow-hidden bg-slate-100 shrink-0">
                   <Image
                     src={blog.image}
                     alt={blog.title}
@@ -78,35 +78,32 @@ export default function LatestInsights() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
                   />
-                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md text-[11px] font-bold tracking-wider uppercase px-3 py-1 rounded-full text-[#005B62] shadow-xs">
+                  <div className="absolute top-2.5 left-2.5 bg-white/92 backdrop-blur-md text-[10px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full text-[#005B62] shadow-xs">
                     {blog.category}
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
+                {/* Compact Content Area */}
+                <div className="p-4 sm:p-4.5 flex flex-col justify-between flex-grow">
                   <div>
                     {/* Date with Calendar icon */}
-                    <div className="flex items-center gap-2 text-xs text-[#536573] font-medium mb-3">
-                      <Calendar size={14} className="text-[#005B62]" />
+                    <div className="flex items-center gap-1.5 text-[11px] text-[#536573] font-medium mb-1.5">
+                      <Calendar size={13} className="text-[#005B62]" />
                       <span>{blog.date}</span>
                       <span>•</span>
                       <span>{blog.readTime}</span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-serif text-lg sm:text-xl text-[#102638] font-bold group-hover:text-[#005B62] transition-colors leading-snug line-clamp-2 mb-4">
+                    <h3 className="font-serif text-[15px] sm:text-[16px] text-[#102638] font-bold group-hover:text-[#005B62] transition-colors leading-snug line-clamp-2 mb-2">
                       {blog.title}
                     </h3>
                   </div>
 
-                  {/* Circular Arrow Button Footer */}
-                  <div className="pt-4 border-t border-[#F0F5F5] flex items-center justify-between">
-                    <span className="text-xs font-semibold text-[#005B62] group-hover:underline">
-                      Read Article
-                    </span>
-                    <div className="w-9 h-9 rounded-full bg-[#F7FAFA] group-hover:bg-[#005B62] text-[#005B62] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-xs group-hover:rotate-45">
-                      <ArrowUpRight size={16} strokeWidth={2.2} />
+                  {/* Circular Navigation Button (Compact footer matching ecosystem cards) */}
+                  <div className="pt-2 border-t border-[#F0F5F5] flex items-center justify-end">
+                    <div className="w-8 h-8 rounded-full bg-[#F7FAFA] group-hover:bg-[#005B62] text-[#005B62] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-xs group-hover:rotate-45">
+                      <ArrowUpRight size={15} strokeWidth={2.2} />
                     </div>
                   </div>
                 </div>

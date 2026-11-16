@@ -53,18 +53,18 @@ export default function EcosystemSection() {
   ];
 
   return (
-    <section id="ecosystem" className="py-20 md:py-28 bg-[#FFFFFF] relative">
+    <section id="ecosystem" className="pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 bg-[#FFFFFF] relative">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
+        {/* Section Header (Compact spacing matching user markup) */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 gap-4">
           <ScrollReveal direction="left">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DFF8F7] text-xs font-bold tracking-[0.25em] text-[#005B62] mb-3 uppercase">
-                <Sparkles size={13} className="text-[#087D83]" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#DFF8F7] text-[11px] font-bold tracking-[0.25em] text-[#005B62] mb-2 uppercase">
+                <Sparkles size={12} className="text-[#087D83]" />
                 <span>Our Ecosystem</span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#102638] font-bold tracking-tight">
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#102638] font-bold tracking-tight">
                 Our Businesses & Platforms
               </h2>
             </div>
@@ -73,26 +73,26 @@ export default function EcosystemSection() {
           <ScrollReveal direction="right">
             <a
               href="#ecosystem"
-              className="group inline-flex items-center gap-2 text-[#005B62] hover:text-[#00474F] font-semibold text-sm md:text-base transition-colors pb-1 border-b-2 border-transparent hover:border-[#005B62] cursor-pointer"
+              className="group inline-flex items-center gap-1.5 text-[#005B62] hover:text-[#00474F] font-semibold text-xs sm:text-sm transition-colors pb-0.5 border-b border-transparent hover:border-[#005B62] cursor-pointer"
             >
               <span>View All Products</span>
-              <ArrowRight size={17} className="transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </ScrollReveal>
         </div>
 
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7">
+        {/* 4 Cards Grid (Reduced card size, minimized padding and compact image cut ratio) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
           {businesses.map((biz, idx) => {
             const Icon = biz.icon;
             return (
-              <ScrollReveal key={idx} direction="up" delay={idx * 120}>
+              <ScrollReveal key={idx} direction="up" delay={idx * 100}>
                 <a
                   href={biz.href}
-                  className={`bg-white rounded-[28px] overflow-hidden border border-[#E2ECEB] shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_45px_rgba(0,91,98,0.12)] transition-all duration-500 hover:-translate-y-2 flex flex-col h-full group ${biz.accentBorder} cursor-pointer`}
+                  className={`bg-white rounded-[22px] sm:rounded-[24px] overflow-hidden border border-[#E2ECEB] shadow-[0_6px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_35px_rgba(0,91,98,0.10)] transition-all duration-400 hover:-translate-y-1.5 flex flex-col h-full group ${biz.accentBorder} cursor-pointer`}
                 >
-                  {/* Image Container with Consistent Ratio */}
-                  <div className="relative h-52 sm:h-56 w-full overflow-hidden bg-slate-100 shrink-0">
+                  {/* Minimized Image Container Ratio */}
+                  <div className="relative h-36 sm:h-40 w-full overflow-hidden bg-slate-100 shrink-0">
                     <Image
                       src={biz.image}
                       alt={biz.name}
@@ -100,40 +100,37 @@ export default function EcosystemSection() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-50 group-hover:opacity-35 transition-opacity" />
                     
                     {/* Floating Badge */}
-                    <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-[11px] font-bold tracking-wide uppercase px-3 py-1 rounded-full text-[#102638] shadow-xs">
+                    <span className="absolute top-2.5 left-2.5 bg-white/92 backdrop-blur-md text-[10px] font-bold tracking-wide uppercase px-2.5 py-0.5 rounded-full text-[#102638] shadow-xs">
                       {biz.badge}
                     </span>
                   </div>
 
-                  {/* Card Body */}
-                  <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
+                  {/* Compact Card Body (Minimal padding & tight internal spacing) */}
+                  <div className="p-4 sm:p-4.5 flex flex-col justify-between flex-grow">
                     <div>
                       {/* Identity Icon & Brand Name */}
-                      <div className="flex items-center gap-3 mb-3.5">
-                        <div className={`w-10 h-10 rounded-xl ${biz.iconBg} ${biz.iconColor} flex items-center justify-center shrink-0 shadow-xs group-hover:scale-110 transition-transform`}>
-                          <Icon size={20} strokeWidth={2.2} />
+                      <div className="flex items-center gap-2.5 mb-2">
+                        <div className={`w-8 h-8 rounded-lg ${biz.iconBg} ${biz.iconColor} flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform`}>
+                          <Icon size={16} strokeWidth={2.2} />
                         </div>
-                        <h3 className="font-sans font-bold text-lg md:text-[19px] text-[#102638] group-hover:text-[#005B62] transition-colors leading-snug">
+                        <h3 className="font-sans font-bold text-[16px] sm:text-[17px] text-[#102638] group-hover:text-[#005B62] transition-colors leading-tight">
                           {biz.name}
                         </h3>
                       </div>
 
                       {/* Description */}
-                      <p className="text-sm text-[#536573] leading-relaxed mb-6 font-normal">
+                      <p className="text-xs sm:text-[13px] text-[#536573] leading-snug mb-3 font-normal">
                         {biz.tagline}
                       </p>
                     </div>
 
-                    {/* Circular Arrow Navigation Button */}
-                    <div className="pt-4 border-t border-[#F0F5F5] flex items-center justify-between">
-                      <span className="text-xs font-semibold text-[#005B62] group-hover:underline">
-                        Explore Platform
-                      </span>
-                      <div className="w-10 h-10 rounded-full bg-[#F7FAFA] group-hover:bg-[#005B62] text-[#005B62] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-xs group-hover:rotate-45">
-                        <ArrowUpRight size={17} strokeWidth={2.2} />
+                    {/* Circular Navigation Button (Explore Platform text removed as requested) */}
+                    <div className="pt-2 border-t border-[#F0F5F5] flex items-center justify-end">
+                      <div className="w-8 h-8 rounded-full bg-[#F7FAFA] group-hover:bg-[#005B62] text-[#005B62] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-xs group-hover:rotate-45">
+                        <ArrowUpRight size={15} strokeWidth={2.2} />
                       </div>
                     </div>
                   </div>

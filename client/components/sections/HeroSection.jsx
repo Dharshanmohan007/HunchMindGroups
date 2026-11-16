@@ -113,10 +113,10 @@ export default function HeroSection() {
 
         </div>
 
-        {/* Right Column: Floating Information Card (positioned top-right to preserve clear view of sun and mountains) */}
-        <div className="w-full lg:w-auto lg:ml-auto flex justify-start sm:justify-end self-start mt-4 lg:mt-3 xl:mt-4">
+        {/* Right Column: Floating Information Card (semi-transparent frosted glass, adjusted lower) */}
+        <div className="w-full lg:w-auto lg:ml-auto flex justify-start sm:justify-end self-start mt-6 sm:mt-8 lg:mt-12 xl:mt-16">
           <ScrollReveal direction="right" delay={350} className="w-full sm:w-auto">
-            <div className="w-full sm:w-[295px] md:w-[310px] bg-white/92 backdrop-blur-xl rounded-[24px] p-5 sm:p-5.5 shadow-[0_20px_50px_rgba(0,0,0,0.22)] border border-white/80">
+            <div className="w-full sm:w-[295px] md:w-[310px] bg-white/65 backdrop-blur-md rounded-[24px] p-5 sm:p-5.5 shadow-[0_16px_40px_rgba(0,0,0,0.16)] border border-white/45">
               
               {/* Card Header with Sprout/Leaf Icon */}
               <div className="flex items-center gap-3 mb-4 sm:mb-4.5">

@@ -74,8 +74,8 @@ export default function TrustedBusinesses() {
   ];
 
   return (
-    <section id="partners" className="relative z-30 w-full mt-1 sm:mt-2 md:-mt-2 lg:-mt-4 px-4 md:px-8">
-      {/* Container width matching max-w-6xl (approx 1140px, same as reference images 1 & 2) */}
+    <section id="partners" className="relative z-30 w-full -mt-12 sm:-mt-16 md:-mt-20 lg:-mt-24 px-4 md:px-8">
+      {/* Container width matching max-w-6xl (approx 1140px, overlapping the bottom hero wave matching shared UI) */}
       <div className="max-w-6xl mx-auto">
         <ScrollReveal direction="up" delay={150}>
           {/* Exact height (~78px-84px) & rounded corners (rounded-[28px]) matching reference images 1 & 2 */}

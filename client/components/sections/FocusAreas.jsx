@@ -33,20 +33,20 @@ export default function FocusAreas() {
   ];
 
   return (
-    <section id="focus" className="py-16 md:py-24 bg-[#F7FAFA] relative border-y border-[#E2ECEB]/60">
+    <section id="focus" className="py-6 sm:py-8 md:py-10 bg-[#FFFFFF] relative border-y border-[#E2ECEB]/40">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
         
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-6 sm:mb-8">
           <ScrollReveal direction="down">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DFF8F7] text-xs font-bold tracking-[0.25em] text-[#005B62] mb-3 uppercase">
-              <Sparkles size={13} className="text-[#087D83]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8F8F7] text-[11px] font-bold tracking-[0.25em] text-[#005B62] mb-2 uppercase">
+              <Sparkles size={12} className="text-[#087D83]" />
               <span>Our Focus Areas</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#102638] font-bold tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#102638] font-bold tracking-tight">
               Transforming Critical Industries
             </h2>
-            <p className="text-sm md:text-base text-[#536573] max-w-xl mx-auto mt-3">
+            <p className="text-xs sm:text-sm text-[#536573] max-w-lg mx-auto mt-2">
               Where technology, deep domain knowledge, and execution discipline intersect to create lasting value.
             </p>
           </ScrollReveal>

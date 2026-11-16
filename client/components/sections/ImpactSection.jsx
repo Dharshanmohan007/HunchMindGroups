@@ -75,7 +75,7 @@ export default function ImpactSection() {
   const activeStat = stats[activeStatIndex];
 
   return (
-    <section id="impact" className="py-12 md:py-18 bg-[#FFFFFF] relative">
+    <section id="impact" className="py-6 sm:py-8 md:py-10 bg-[#FFFFFF] relative">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
         <ScrollReveal direction="up" delay={150}>
           
@@ -132,23 +132,23 @@ export default function ImpactSection() {
               {/* Top Row: Label & Micro-Indicator */}
               <div>
                 <div className="flex items-center justify-between mb-4 sm:mb-5">
-                  {/* Top-Left Label: Dash + "OUR IMPACT" */}
+                  {/* Top-Left Label: Dash + "OUR IMPACT" (Clean White) */}
                   <div className="flex items-center gap-2.5">
-                    <span className="w-5 sm:w-6 h-[2px] bg-[#65DDE0] rounded-full inline-block" />
-                    <span className="text-[11px] sm:text-xs font-bold tracking-[0.25em] text-white/95 uppercase">
+                    <span className="w-5 sm:w-6 h-[2px] bg-white rounded-full inline-block" />
+                    <span className="text-[11px] sm:text-xs font-bold tracking-[0.25em] text-white uppercase">
                       OUR IMPACT
                     </span>
                   </div>
 
-                  {/* Micro Hint (Fades out when hovered) */}
-                  <div
-                    className={`hidden sm:flex items-center gap-1.5 text-[11px] text-[#65DDE0]/80 font-medium transition-opacity duration-300 ${
+                  {/* Micro Hint (White text instead of pale green) */}
+                  {/* <div
+                    className={`hidden sm:flex items-center gap-1.5 text-[11px] text-white/90 font-medium transition-opacity duration-300 ${
                       isHovered ? "opacity-0 pointer-events-none" : "opacity-100"
                     }`}
                   >
                     <span>Hover to explore details</span>
                     <span className="animate-pulse">↓</span>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* The 4 Statistics Strip */}
@@ -170,10 +170,10 @@ export default function ImpactSection() {
                     >
                       <div className="flex items-baseline gap-1">
                         <span
-                          className={`font-sans font-bold text-3xl sm:text-[34px] md:text-4xl lg:text-[42px] tracking-tight leading-none transition-colors duration-300 ${
+                          className={`font-sans font-bold text-3xl sm:text-[34px] md:text-4xl lg:text-[42px] tracking-tight leading-none text-white transition-colors duration-300 ${
                             isHovered && activeStatIndex === idx
-                              ? "text-[#65DDE0] scale-105 transform origin-left"
-                              : "text-white group-hover/stat:text-[#65DDE0]"
+                              ? "scale-105 transform origin-left"
+                              : "group-hover/stat:text-white"
                           }`}
                         >
                           {item.stat}
@@ -181,9 +181,9 @@ export default function ImpactSection() {
                       </div>
                       
                       <span
-                        className={`text-xs sm:text-[13px] md:text-sm font-medium mt-1 transition-colors duration-300 ${
+                        className={`text-xs sm:text-[13px] md:text-sm font-medium mt-1 text-white transition-colors duration-300 ${
                           isHovered && activeStatIndex === idx
-                            ? "text-white font-semibold"
+                            ? "font-semibold"
                             : "text-white/90 group-hover/stat:text-white"
                         }`}
                       >
@@ -195,7 +195,7 @@ export default function ImpactSection() {
                         <div
                           className={`h-[2px] rounded-full mt-2 transition-all duration-300 ${
                             activeStatIndex === idx
-                              ? "w-8 bg-[#65DDE0]"
+                              ? "w-8 bg-white"
                               : "w-0 bg-transparent"
                           }`}
                         />
@@ -219,14 +219,14 @@ export default function ImpactSection() {
                   
                   {/* Left Column: Heading, Tagline & Detailed Paragraph (7 cols) */}
                   <div className="lg:col-span-7">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#65DDE0]/15 text-[#65DDE0] text-[11px] font-bold tracking-wider uppercase mb-2.5">
-                      <Sparkles size={12} className="text-[#65DDE0]" />
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-white text-[11px] font-bold tracking-wider uppercase mb-2.5">
+                      <Sparkles size={12} className="text-white" />
                       <span>{activeStat.tag}</span>
                     </div>
 
                     <h3 className="font-serif text-xl sm:text-2xl md:text-[26px] text-white font-bold tracking-tight mb-2">
                       {activeStat.heading}{" "}
-                      <span className="text-[#65DDE0] font-normal italic font-serif">
+                      <span className="text-white font-normal italic font-serif">
                         {activeStat.tagline}
                       </span>
                     </h3>
@@ -238,7 +238,7 @@ export default function ImpactSection() {
 
                   {/* Right Column: Key Highlights Frosted Card (5 cols) */}
                   <div className="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 shadow-lg">
-                    <div className="text-[11px] font-bold text-[#65DDE0] uppercase tracking-wider mb-3 flex items-center justify-between">
+                    <div className="text-[11px] font-bold text-white uppercase tracking-wider mb-3 flex items-center justify-between">
                       <span>Core Capabilities</span>
                       <span className="text-[10px] text-white/60 font-normal">Active Metric</span>
                     </div>
@@ -246,7 +246,7 @@ export default function ImpactSection() {
                     <div className="space-y-2.5">
                       {activeStat.highlights.map((h, i) => (
                         <div key={i} className="flex items-start gap-2.5 text-xs text-white/95">
-                          <CheckCircle2 size={15} className="text-[#65DDE0] shrink-0 mt-0.5" />
+                          <CheckCircle2 size={15} className="text-white shrink-0 mt-0.5" />
                           <span className="leading-snug">{h}</span>
                         </div>
                       ))}
@@ -273,7 +273,7 @@ export default function ImpactSection() {
                         }}
                         className={`px-2.5 py-1 rounded-full text-[11px] font-medium transition-all cursor-pointer ${
                           activeStatIndex === idx
-                            ? "bg-[#65DDE0] text-[#00474F] font-bold shadow-xs scale-105"
+                            ? "bg-white text-[#00474F] font-bold shadow-xs scale-105"
                             : "bg-white/10 text-white/80 hover:bg-white/20 hover:text-white"
                         }`}
                       >
@@ -282,7 +282,7 @@ export default function ImpactSection() {
                     ))}
                   </div>
 
-                  <span className="text-[11px] text-[#65DDE0]/80 hidden md:inline-block">
+                  <span className="text-[11px] text-white/80 hidden md:inline-block">
                     Move mouse away to collapse
                   </span>
                 </div>

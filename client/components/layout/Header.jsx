@@ -1,7 +1,18 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { ChevronDown, ArrowUpRight, Menu, X, Cpu, Layers, Sprout, FlaskConical } from "lucide-react";
+
+// Dynamic Logo Configuration: Update or replace imageSrc / values when the final logo asset is provided
+export const LOGO_CONFIG = {
+  useImage: false, // Set to true when an image file (e.g., /images/logo.png or /images/logo.svg) is provided
+  imageSrc: "/images/logo.png",
+  altText: "HunchMind Group Logo",
+  companyName: "HunchMind",
+  companySubtitle: "Group",
+  tagline: "Ideas into Reality",
+};
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -77,23 +88,38 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           
-          {/* Brand Logo (Stylized geometric 'M' / mountain mark + HunchMind Group) */}
-          <a href="#" className="flex items-center gap-2.5 group cursor-pointer">
-            <div className="w-8 sm:w-9 h-8 sm:h-9 flex items-center justify-center shrink-0">
-              <svg viewBox="0 0 36 36" fill="none" className="w-full h-full transform group-hover:scale-105 transition-transform">
-                {/* Stylized geometric M monogram in teal and cyan gradient */}
-                <path d="M4 29V7L14 20L22 10L32 23V29" stroke="#005B62" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M14 20L22 10L32 23" stroke="#65DDE0" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <div className="leading-tight flex flex-col justify-center">
-              <span className="font-sans font-bold text-lg sm:text-[19px] tracking-tight text-[#102638] leading-none">
-                HunchMind
-              </span>
-              <span className="font-sans font-bold text-base sm:text-[17px] tracking-tight text-[#102638] leading-tight">
-                Group
-              </span>
-            </div>
+          {/* Dynamic Brand Logo */}
+          <a href="#" className="flex items-center gap-2.5 group cursor-pointer" aria-label={LOGO_CONFIG.altText}>
+            {LOGO_CONFIG.useImage ? (
+              <div className="relative h-8 sm:h-9 w-auto min-w-[32px] flex items-center">
+                <Image
+                  src={LOGO_CONFIG.imageSrc}
+                  alt={LOGO_CONFIG.altText}
+                  width={140}
+                  height={36}
+                  priority
+                  className="h-8 sm:h-9 w-auto object-contain group-hover:scale-105 transition-transform"
+                />
+              </div>
+            ) : (
+              <>
+                <div className="w-8 sm:w-9 h-8 sm:h-9 flex items-center justify-center shrink-0">
+                  <svg viewBox="0 0 36 36" fill="none" className="w-full h-full transform group-hover:scale-105 transition-transform">
+                    {/* Stylized geometric M monogram in teal and cyan gradient */}
+                    <path d="M4 29V7L14 20L22 10L32 23V29" stroke="#005B62" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M14 20L22 10L32 23" stroke="#65DDE0" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <div className="leading-tight flex flex-col justify-center">
+                  <span className="font-sans font-bold text-lg sm:text-[19px] tracking-tight text-[#102638] leading-none">
+                    {LOGO_CONFIG.companyName}
+                  </span>
+                  <span className="font-sans font-bold text-base sm:text-[17px] tracking-tight text-[#102638] leading-tight">
+                    {LOGO_CONFIG.companySubtitle}
+                  </span>
+                </div>
+              </>
+            )}
           </a>
 
           {/* Desktop Navigation Links */}
@@ -215,18 +241,18 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Exact Concave Wave Bottom Border of the Navbar (matching reference image 4) */}
+      {/* Subtle Concave Wave Bottom Border of the Navbar (matching shared UI design, not too long) */}
       <div className="relative w-full overflow-hidden leading-none z-10 pointer-events-none -mt-[1px]">
         <svg
-          viewBox="0 0 1440 28"
+          viewBox="0 0 1440 16"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-3 sm:h-4 md:h-5 preserve-3d"
+          className="w-full h-1.5 sm:h-2 md:h-2.5 preserve-3d"
           preserveAspectRatio="none"
         >
-          {/* Concave wave extending white downward in the middle, narrowing at left and right */}
+          {/* Gentle, shallow concave curve matching the shared UI design */}
           <path
-            d="M 0,0 L 1440,0 L 1440,4 C 1300,24 1120,28 920,28 L 520,28 C 320,28 140,24 0,4 Z"
+            d="M 0,0 L 1440,0 L 1440,2 C 1220,12 1020,14 860,14 L 580,14 C 420,14 220,12 0,2 Z"
             fill="#FFFFFF"
           />
         </svg>
