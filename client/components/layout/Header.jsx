@@ -218,15 +218,15 @@ export default function Header() {
           </nav>
 
           {/* Right: Contact Us Button */}
-          {/* <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-1.5 bg-[#00474F] hover:bg-[#005B62] text-white text-[13.5px] font-semibold px-6 py-2.5 rounded-full shadow-[0_4px_15px_rgba(0,71,79,0.25)] hover:shadow-[0_6px_20px_rgba(0,91,98,0.35)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
+              className="inline-flex items-center gap-1.5 bg-[#005B62] hover:bg-[#00474F] text-white text-[13.5px] font-semibold px-6 py-2.5 rounded-full shadow-[0_4px_15px_rgba(0,71,79,0.25)] hover:shadow-[0_6px_20px_rgba(0,91,98,0.35)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
             >
               <span>Contact Us</span>
               <ArrowUpRight size={15} />
             </a>
-          </div> */}
+          </div>
 
           {/* Mobile Hamburger Button */}
           <button

@@ -6,6 +6,7 @@ import FocusAreas from "../components/sections/FocusAreas";
 import ImpactSection from "../components/sections/ImpactSection";
 import AboutSection from "../components/sections/AboutSection";
 import LatestInsights from "../components/sections/LatestInsights";
+import ContactSection from "../components/sections/ContactSection";
 import Footer from "../components/layout/Footer";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
         <ImpactSection />
         <AboutSection />
         <LatestInsights />
+        <ContactSection />
       </main>
       <Footer />
     </>

@@ -39,7 +39,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="relative w-full bg-[#00363C] text-white overflow-hidden">
+    <footer id="footer" className="relative w-full bg-[#00363C] text-white overflow-hidden">
       
       {/* Top Wave Border of Footer (Exact multi-layered wave matching reference image 2) */}
       <div className="relative w-full overflow-hidden leading-none z-10 pointer-events-none -mt-[1px] bg-[#FAFAFA]">
