@@ -79,9 +79,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 items-start lg:items-center justify-between pb-8">
           
           {/* Col 1: Logo & Tagline (Full width on tablet, 5 cols on desktop) */}
-          <div className="md:col-span-2 lg:col-span-5 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 w-full">
+          <div className="md:col-span-2 lg:col-span-4 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 w-full">
             {/* Logo Mark + Brand Name */}
-            <a href="#" className="flex items-center gap-2.5 group shrink-0">
+            <a href="/" className="flex items-center gap-2.5 group shrink-0">
               <div className="w-8 h-8 flex items-center justify-center shrink-0">
                 <svg viewBox="0 0 36 36" fill="none" className="w-full h-full transform group-hover:scale-105 transition-transform">
                   <path d="M4 29V7L14 20L22 10L32 23V29" stroke="#65DDE0" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -107,24 +107,32 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 2: Quick Links (1 col on tablet, 4 cols on desktop; evenly spaced across mobile) */}
-          <div className="md:col-span-1 lg:col-span-4 w-full">
+          {/* Col 2: Quick Links (Expanded across solutions & platforms) */}
+          <div className="md:col-span-1 lg:col-span-5 w-full">
             <h4 className="text-xs font-semibold text-white tracking-wide mb-3">
-              Quick Links
+              Solutions & Quick Links
             </h4>
             <div className="space-y-2 text-xs sm:text-[13px] font-medium text-white/85 w-full">
-              {/* Row 1: Evenly spaced across mobile */}
-              <div className="flex items-center justify-between sm:justify-start gap-3 sm:gap-5 w-full">
-                <a href="#" className="hover:text-[#65DDE0] transition-colors">Home</a>
-                <a href="#about" className="hover:text-[#65DDE0] transition-colors">About</a>
-                <a href="#ecosystem" className="hover:text-[#65DDE0] transition-colors">Products</a>
-                <a href="#partners" className="hover:text-[#65DDE0] transition-colors">Clients</a>
+              {/* Row 1: Core Navigation */}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 w-full">
+                <a href="/" className="hover:text-[#65DDE0] transition-colors">Home</a>
+                <a href="/#about" className="hover:text-[#65DDE0] transition-colors">About</a>
+                <a href="/products/hmi-nexus" className="hover:text-[#65DDE0] transition-colors text-[#65DDE0] font-semibold">HMI Nexus</a>
+                <a href="/solutions/ai-logistics-intelligence" className="hover:text-[#65DDE0] transition-colors">AI Logistics</a>
               </div>
-              {/* Row 2: Evenly spaced across mobile */}
-              <div className="flex items-center justify-between sm:justify-start gap-4 sm:gap-5 max-w-[280px] sm:max-w-none">
-                <a href="#focus" className="hover:text-[#65DDE0] transition-colors">Network</a>
-                <a href="#impact" className="hover:text-[#65DDE0] transition-colors">Achievements</a>
-                <a href="#blogs" className="hover:text-[#65DDE0] transition-colors">Blogs</a>
+              {/* Row 2: Solution Landing Pages */}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 w-full">
+                <a href="/solutions/cold-chain-logistics" className="hover:text-[#65DDE0] transition-colors">Cold Chain</a>
+                <a href="/solutions/supply-chain-visibility-iot" className="hover:text-[#65DDE0] transition-colors">IoT Visibility</a>
+                <a href="/solutions/predictive-freight-routing" className="hover:text-[#65DDE0] transition-colors">Freight Routing</a>
+                <a href="/solutions/agricultural-supply-chain" className="hover:text-[#65DDE0] transition-colors">Agri Supply</a>
+              </div>
+              {/* Row 3: Proof Points & Inquiries */}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-white/70 text-[11px] sm:text-xs pt-1">
+                <a href="/#partners" className="hover:text-[#65DDE0] transition-colors">Clients</a>
+                <a href="/#impact" className="hover:text-[#65DDE0] transition-colors">Achievements</a>
+                <a href="/#blogs" className="hover:text-[#65DDE0] transition-colors">Blogs</a>
+                <a href="#contact" className="hover:text-[#65DDE0] transition-colors">Contact</a>
               </div>
             </div>
           </div>

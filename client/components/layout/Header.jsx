@@ -42,36 +42,52 @@ export default function Header() {
 
   const products = [
     {
-      name: "HunchMind Intelligence",
-      desc: "AI & Data Solutions for Business Impact",
-      icon: Cpu,
-      color: "text-amber-500",
-      bgColor: "bg-amber-50",
-      href: "#ecosystem",
-    },
-    {
-      name: "HMI Nexus",
-      desc: "Supply Chain Intelligence for Agri & Perishables",
+      name: "HMI Nexus Platform",
+      desc: "Flagship Supply Chain Intelligence OS",
       icon: Sprout,
       color: "text-emerald-600",
       bgColor: "bg-emerald-50",
-      href: "#ecosystem",
+      href: "/products/hmi-nexus",
     },
     {
-      name: "HunchMind Ventures",
-      desc: "Incubating & Scaling Next-Gen Businesses",
+      name: "AI Logistics Intelligence",
+      desc: "Enterprise Decision Engines & Analytics",
+      icon: Cpu,
+      color: "text-amber-500",
+      bgColor: "bg-amber-50",
+      href: "/solutions/ai-logistics-intelligence",
+    },
+    {
+      name: "Cold Chain Logistics",
+      desc: "Up to 24% Perishable Spoilage Reduction",
       icon: Layers,
-      color: "text-purple-600",
-      bgColor: "bg-purple-50",
-      href: "#ecosystem",
-    },
-    {
-      name: "HunchMind Labs",
-      desc: "Research & Innovation in Applied AI",
-      icon: FlaskConical,
       color: "text-cyan-600",
       bgColor: "bg-cyan-50",
-      href: "#ecosystem",
+      href: "/solutions/cold-chain-logistics",
+    },
+    {
+      name: "Predictive Freight Routing",
+      desc: "Multimodal & Deadhead Mile Optimization",
+      icon: FlaskConical,
+      color: "text-purple-600",
+      bgColor: "bg-purple-50",
+      href: "/solutions/predictive-freight-routing",
+    },
+    {
+      name: "Agricultural Supply Chain",
+      desc: "Farmgate-to-Retail Mandi Intelligence",
+      icon: Sprout,
+      color: "text-emerald-600",
+      bgColor: "bg-emerald-50",
+      href: "/solutions/agricultural-supply-chain",
+    },
+    {
+      name: "Supply Chain Visibility & IoT",
+      desc: "Real-Time Sensor & Fleet Telemetry",
+      icon: Cpu,
+      color: "text-cyan-600",
+      bgColor: "bg-cyan-50",
+      href: "/solutions/supply-chain-visibility-iot",
     },
   ];
 
@@ -89,7 +105,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           
           {/* Dynamic Brand Logo */}
-          <a href="#" className="flex items-center gap-2.5 group cursor-pointer" aria-label={LOGO_CONFIG.altText}>
+          <a href="/" className="flex items-center gap-2.5 group cursor-pointer" aria-label={LOGO_CONFIG.altText}>
             {LOGO_CONFIG.useImage ? (
               <div className="relative h-8 sm:h-9 w-auto min-w-[32px] flex items-center">
                 <Image
@@ -126,14 +142,14 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-7 lg:gap-8 text-[14px] font-medium text-[#102638]">
             {/* Home with active teal indicator underline */}
             <a
-              href="#"
-              className="text-[#005B62] font-semibold relative py-1 border-b-2 border-[#005B62] transition-colors"
+              href="/"
+              className="text-[#005B62] font-semibold relative py-1 hover:text-[#00363C] transition-colors"
             >
               Home
             </a>
 
             <a
-              href="#about"
+              href="/#about"
               className="hover:text-[#005B62] transition-colors py-1"
             >
               About
@@ -146,7 +162,7 @@ export default function Header() {
                 onClick={() => setProductsOpen(!productsOpen)}
                 className="flex items-center gap-1 hover:text-[#005B62] transition-colors py-1 cursor-pointer font-medium"
               >
-                <span>Products</span>
+                <span>Products & Solutions</span>
                 <ChevronDown
                   size={14}
                   className={`transition-transform duration-200 ${productsOpen ? "rotate-180 text-[#005B62]" : ""}`}
@@ -155,9 +171,9 @@ export default function Header() {
 
               {/* Products Dropdown Menu */}
               {productsOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-80 bg-white rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.12)] border border-[#E2ECEB] p-2.5 z-50 animate-in fade-in duration-200">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-88 bg-white rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.12)] border border-[#E2ECEB] p-2.5 z-50 animate-in fade-in duration-200">
                   <div className="text-[11px] font-bold tracking-wider text-[#536573] uppercase px-3 py-1.5 border-b border-[#E2ECEB]/60 mb-1">
-                    Group Businesses & Platforms
+                    Group Platforms & Solutions
                   </div>
                   <div className="space-y-1">
                     {products.map((p, idx) => {
@@ -167,7 +183,7 @@ export default function Header() {
                           key={idx}
                           href={p.href}
                           onClick={() => setProductsOpen(false)}
-                          className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#F7FAFA] transition-colors group cursor-pointer"
+                          className="flex items-start gap-3 p-2 rounded-xl hover:bg-[#F7FAFA] transition-colors group cursor-pointer"
                         >
                           <div className={`w-8 h-8 rounded-lg ${p.bgColor} ${p.color} flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform`}>
                             <Icon size={16} />
@@ -189,28 +205,28 @@ export default function Header() {
             </div>
 
             <a
-              href="#partners"
+              href="/#partners"
               className="hover:text-[#005B62] transition-colors py-1"
             >
               Clients
             </a>
 
             <a
-              href="#focus"
+              href="/#focus"
               className="hover:text-[#005B62] transition-colors py-1"
             >
               Network
             </a>
 
             <a
-              href="#impact"
+              href="/#impact"
               className="hover:text-[#005B62] transition-colors py-1"
             >
               Achievements
             </a>
 
             <a
-              href="#blogs"
+              href="/#blogs"
               className="hover:text-[#005B62] transition-colors py-1"
             >
               Blogs
@@ -263,14 +279,14 @@ export default function Header() {
         <div className="lg:hidden bg-white/98 backdrop-blur-xl border-b border-[#E2ECEB] shadow-2xl px-6 py-6 animate-in slide-in-from-top-4 duration-300">
           <nav className="flex flex-col gap-4 text-base font-semibold text-[#102638]">
             <a
-              href="#"
+              href="/"
               onClick={() => setMobileMenuOpen(false)}
               className="text-[#005B62] font-bold"
             >
               Home
             </a>
             <a
-              href="#about"
+              href="/#about"
               onClick={() => setMobileMenuOpen(false)}
               className="hover:text-[#005B62]"
             >
@@ -278,7 +294,7 @@ export default function Header() {
             </a>
             <div className="py-2 border-y border-[#E2ECEB]/60 space-y-2">
               <span className="text-xs uppercase font-bold text-[#536573] tracking-wider">
-                Products
+                Products & Solutions
               </span>
               <div className="pl-3 space-y-2 text-sm font-medium">
                 {products.map((p, idx) => (
@@ -294,28 +310,28 @@ export default function Header() {
               </div>
             </div>
             <a
-              href="#partners"
+              href="/#partners"
               onClick={() => setMobileMenuOpen(false)}
               className="hover:text-[#005B62]"
             >
               Clients
             </a>
             <a
-              href="#focus"
+              href="/#focus"
               onClick={() => setMobileMenuOpen(false)}
               className="hover:text-[#005B62]"
             >
               Network
             </a>
             <a
-              href="#impact"
+              href="/#impact"
               onClick={() => setMobileMenuOpen(false)}
               className="hover:text-[#005B62]"
             >
               Achievements
             </a>
             <a
-              href="#blogs"
+              href="/#blogs"
               onClick={() => setMobileMenuOpen(false)}
               className="hover:text-[#005B62]"
             >
