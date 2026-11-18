@@ -94,6 +94,36 @@ export default function SolutionPageLayout({
 }) {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
+  // Generate Schema.org BreadcrumbList structured data
+  const breadcrumbListSchema =
+    breadcrumbs && breadcrumbs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.hunchmindintelligence.com/",
+            },
+            ...breadcrumbs.map((crumb, idx) => {
+              const itemObj = {
+                "@type": "ListItem",
+                position: idx + 2,
+                name: crumb.label,
+              };
+              if (crumb.href) {
+                itemObj.item = crumb.href.startsWith("http")
+                  ? crumb.href
+                  : `https://www.hunchmindintelligence.com${crumb.href}`;
+              }
+              return itemObj;
+            }),
+          ],
+        }
+      : null;
+
   return (
     <>
       {/* Schema Injection in Head (JSON-LD) */}
@@ -107,6 +137,12 @@ export default function SolutionPageLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      {breadcrumbListSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListSchema) }}
         />
       )}
 

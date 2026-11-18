@@ -92,7 +92,7 @@ export default function ColdChainLogisticsPage() {
   const heroMetrics = [
     { value: "Up to 24%", label: "Spoilage Cut" },
     { value: "-25°C to +15°C", label: "Thermal Range" },
-    { value: "< 2 mins", label: "Breach Alert Latency" },
+    { value: "Instant", label: "Breach Alerting" },
     { value: "Pan-India", label: "Reefer Visibility" },
   ];
 
@@ -100,7 +100,7 @@ export default function ColdChainLogisticsPage() {
     {
       title: "Undetected Temperature Breaches",
       desc: "Reefer gensets frequently shut down or run out of diesel mid-transit, with drivers and managers unaware until goods arrive spoiled at destination docks.",
-      stat: "Accounts for over 18% of fresh-produce rejections",
+      stat: "Leading cause of commercial fresh-produce rejections",
     },
     {
       title: "Post-Trip Data Logging",
@@ -130,7 +130,7 @@ export default function ColdChainLogisticsPage() {
       title: "Instant Thermal Anomaly Alerts",
       desc: "Automated SMS, WhatsApp, and dashboard notifications fire the second temperature drifts beyond strict upper or lower threshold limits.",
       points: [
-        "Sub-2-minute breach escalation",
+        "Immediate automated breach escalation",
         "Automated driver & fleet manager callouts",
         "Critical reefer power cutoff warnings",
       ],
@@ -184,17 +184,17 @@ export default function ColdChainLogisticsPage() {
       desc: "Direct reduction in dump rates across fresh fruit, vegetable, and dairy corridors.",
     },
     {
-      value: "99.2%",
-      label: "Compliance Adherence",
+      value: "High",
+      label: "Cold-Chain Integrity",
       desc: "Shipments maintained within strict client temperature bands from loading to delivery.",
     },
     {
-      value: "60 mins",
-      label: "Faster Triage",
+      value: "Proactive",
+      label: "Anomaly Triage",
       desc: "Rapid reefer breakdown response preventing total loss of high-value cargo.",
     },
     {
-      value: "100%",
+      value: "Complete",
       label: "Digital Traceability",
       desc: "Zero reliance on manual paper logs or post-facto USB temperature sticks.",
     },
@@ -207,7 +207,7 @@ export default function ColdChainLogisticsPage() {
     },
     {
       title: "Live Cloud Streaming",
-      desc: "Telemetry streams every 60 seconds over cellular networks, logging temperature, humidity, GPS location, and door status.",
+      desc: "Telemetry streams continuously over cellular networks, logging temperature, humidity, GPS location, and door status.",
     },
     {
       title: "Predictive Degradation Tracking",

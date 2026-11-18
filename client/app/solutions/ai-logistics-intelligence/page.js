@@ -77,7 +77,7 @@ const faqSchema = {
       name: "What typical cost savings do enterprises achieve using your AI logistics models?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Our enterprise deployments demonstrate up to a 24% reduction in perishable transit spoilage, 14–18% reduction in empty deadhead miles through intelligent load matching, and measurable fuel efficiency gains across commercial freight corridors.",
+        text: "Our enterprise deployments demonstrate up to a 24% reduction in perishable transit spoilage through IoT telemetry, substantial reduction in empty deadhead miles through intelligent load matching, and measurable fuel efficiency gains across commercial freight corridors.",
       },
     },
   ],
@@ -100,7 +100,7 @@ export default function AiLogisticsIntelligencePage() {
     {
       title: "Static Rule-Based Routing",
       desc: "Legacy systems rely on rigid highway tables that fail to adapt when interstate checkpoints, weather disruptions, or road blockages cause multi-hour bottlenecks.",
-      stat: "Causes up to 22% avoidable transit delay",
+      stat: "Frequent cause of recurring transit delays",
     },
     {
       title: "Asymmetric Logistics Data",
@@ -110,7 +110,7 @@ export default function AiLogisticsIntelligencePage() {
     {
       title: "Unbalanced Fleet Utilization",
       desc: "Commercial trucks frequently operate at sub-optimal load capacity or return empty (deadhead miles) due to poor demand forecasting across regional freight lanes.",
-      stat: "Up to 30% deadhead miles in regional freight",
+      stat: "Major contributor to carrier operating overhead",
     },
   ];
 
@@ -184,9 +184,9 @@ export default function AiLogisticsIntelligencePage() {
       desc: "Achieved via real-time cold-chain sensor alerts and accelerated routing.",
     },
     {
-      value: "14-18%",
+      value: "Optimized",
       label: "Deadhead Reduction",
-      desc: "Eliminating empty return journeys through automated return-load discovery.",
+      desc: "Minimizing empty return journeys through automated return-load discovery.",
     },
     {
       value: "50+",
@@ -194,9 +194,9 @@ export default function AiLogisticsIntelligencePage() {
       desc: "Active across India's premier hypermarket, agri, and freight ecosystems.",
     },
     {
-      value: "100%",
-      label: "API Compatibility",
-      desc: "Rapid deployment over existing SAP, Oracle, and custom WMS backends.",
+      value: "Full",
+      label: "API Integration",
+      desc: "Rapid deployment over existing ERP, enterprise WMS, and TMS backends.",
     },
   ];
 
@@ -230,7 +230,7 @@ export default function AiLogisticsIntelligencePage() {
     },
     {
       q: "What typical cost savings do enterprises achieve using your AI logistics models?",
-      a: "Our enterprise deployments demonstrate up to a 24% reduction in perishable transit spoilage, 14–18% reduction in empty deadhead miles through intelligent load matching, and measurable fuel efficiency gains across commercial freight corridors.",
+      a: "Our enterprise deployments demonstrate up to a 24% reduction in perishable transit spoilage through IoT telemetry, substantial reduction in empty deadhead miles through intelligent load matching, and measurable fuel efficiency gains across commercial freight corridors.",
     },
     {
       q: "How does HunchMind Intelligence protect proprietary supply chain data?",

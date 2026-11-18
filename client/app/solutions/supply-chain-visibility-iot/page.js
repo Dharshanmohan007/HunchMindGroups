@@ -77,7 +77,7 @@ const faqSchema = {
       name: "How accurate are predictive Estimated Time of Arrival (ETA) calculations?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Unlike standard navigation apps that only consider passenger car speeds, our AI models factor in commercial truck speed limits, toll plaza delays, state border clearance durations, and time-of-day loading restrictions to deliver 92%+ accurate delivery arrival windows.",
+        text: "Unlike standard navigation apps that only consider passenger car speeds, our AI models factor in commercial truck speed limits, toll plaza delays, state border clearance durations, and time-of-day loading restrictions to deliver highly dependable delivery arrival windows.",
       },
     },
   ],
@@ -90,8 +90,8 @@ export default function SupplyChainVisibilityIotPage() {
   ];
 
   const heroMetrics = [
-    { value: "< 60s", label: "Telemetry Latency" },
-    { value: "92%+", label: "ETA Accuracy" },
+    { value: "Real-Time", label: "Telemetry Stream" },
+    { value: "Dynamic", label: "ETA Precision" },
     { value: "Multi-Tier", label: "Enterprise Sharing" },
     { value: "Pan-India", label: "Toll & GPS Sync" },
   ];
@@ -100,12 +100,12 @@ export default function SupplyChainVisibilityIotPage() {
     {
       title: "Manual Status Phone Calls",
       desc: "Logistics teams waste hundreds of hours daily calling drivers, brokers, and dispatchers just to ask 'Where is the truck?', with inaccurate or misleading answers.",
-      stat: "Consumes 30%+ of dispatcher daily bandwidth",
+      stat: "Significant drain on dispatcher daily bandwidth",
     },
     {
       title: "Unexpected Warehouse Congestion",
       desc: "When delayed trucks arrive unannounced in bunches, distribution centers face massive yard congestion, long dwell times, and hefty detention charges.",
-      stat: "Leads to 3-5 hour dock turnaround delays",
+      stat: "Causes unpredictable dock turnaround delays",
     },
     {
       title: "Fragmented Contractor Telematics",
@@ -128,7 +128,7 @@ export default function SupplyChainVisibilityIotPage() {
     {
       icon: "radio",
       title: "Universal Telematics Aggregation",
-      desc: "Connects with 80+ GPS telematics hardware vendors, FASTag toll networks, and mobile-based tracking without forcing hardware replacements.",
+      desc: "Connects with major GPS telematics hardware vendors, FASTag toll networks, and mobile-based tracking without forcing hardware replacements.",
       points: [
         "Open API hardware compatibility",
         "FASTag toll gate crossing sync",
@@ -179,23 +179,23 @@ export default function SupplyChainVisibilityIotPage() {
 
   const impactMetrics = [
     {
-      value: "80%",
-      label: "Fewer Tracking Calls",
+      value: "Drastic",
+      label: "Call Reduction",
       desc: "Automated real-time updates eliminate repetitive manual driver phone check-ins.",
     },
     {
-      value: "92%+",
+      value: "High",
       label: "ETA Reliability",
       desc: "Consistently accurate delivery windows enabling tighter warehouse labor scheduling.",
     },
     {
-      value: "35 mins",
-      label: "Faster Dock Turnaround",
+      value: "Accelerated",
+      label: "Dock Turnaround",
       desc: "Pre-alerted distribution centers prepare staging docks before vehicles arrive.",
     },
     {
-      value: "100%",
-      label: "FASTag & GPS Match",
+      value: "Dual-Source",
+      label: "Telemetry Match",
       desc: "Dual-source verification eliminates bogus transit checkpoint delay claims.",
     },
   ];
@@ -207,7 +207,7 @@ export default function SupplyChainVisibilityIotPage() {
     },
     {
       title: "Live Stream Aggregation",
-      desc: "Our engine links GPS hardware, FASTag toll records, and mobile telemetry to track the vehicle's progress every 60 seconds.",
+      desc: "Our engine links GPS hardware, FASTag toll records, and mobile telemetry to track the vehicle's progress in real time.",
     },
     {
       title: "Predictive ETA Tracking",
@@ -230,7 +230,7 @@ export default function SupplyChainVisibilityIotPage() {
     },
     {
       q: "How accurate are predictive Estimated Time of Arrival (ETA) calculations?",
-      a: "Unlike standard navigation apps that only consider passenger car speeds, our AI models factor in commercial truck speed limits, toll plaza delays, state border clearance durations, and time-of-day loading restrictions to deliver 92%+ accurate delivery arrival windows.",
+      a: "Unlike standard navigation apps that only consider passenger car speeds, our AI models factor in commercial truck speed limits, toll plaza delays, state border clearance durations, and time-of-day loading restrictions to deliver highly dependable delivery arrival windows.",
     },
     {
       q: "Can our external suppliers and customers track shipments without accessing our internal systems?",

@@ -70,7 +70,7 @@ const faqSchema = {
       name: "How does HMI Nexus help commercial logistics and retail enterprises?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "HMI Nexus delivers verifiable economic value: up to a 24% reduction in perishable transit spoilage, 14–18% reduction in empty truck deadhead miles, 92%+ reliable delivery ETAs, and seamless digital quality reconciliation between rural suppliers and retail distribution centers.",
+        text: "HMI Nexus delivers verifiable operational value: up to a 24% reduction in perishable transit spoilage through proactive thermal telemetry, significant reduction in empty truck deadhead miles via predictive load matching, dependable delivery arrival windows, and seamless digital quality reconciliation between rural suppliers and retail distribution centers.",
       },
     },
     {
@@ -78,7 +78,7 @@ const faqSchema = {
       name: "How is HMI Nexus deployed within an enterprise?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "HMI Nexus is available as a cloud-hosted software platform with open REST APIs, hardware-agnostic IoT telematics integration, and dedicated enterprise connectors for SAP, Oracle, and custom WMS systems. Full operational deployment typically takes less than 3 weeks.",
+        text: "HMI Nexus is available as a cloud-hosted software platform with open REST APIs, hardware-agnostic IoT telematics integration, and dedicated enterprise connectors for ERP and custom WMS systems, enabling rapid and structured operational rollout.",
       },
     },
   ],
@@ -101,7 +101,7 @@ export default function HmiNexusProductPage() {
     {
       title: "Disconnected Point Solutions",
       desc: "Logistics heads struggle with separate tools for GPS tracking, temperature logging, route planning, and billing, resulting in fragmented data and high overhead.",
-      stat: "4-6 different disconnected vendor portals",
+      stat: "Fragmented legacy systems across disparate vendors",
     },
     {
       title: "Lack of Domain Specialization",
@@ -122,7 +122,7 @@ export default function HmiNexusProductPage() {
       desc: "Real-time temperature and humidity tracking with predictive spoilage alerts that safeguard fresh produce, dairy, and pharmaceuticals from farm to retail store.",
       points: [
         "Continuous multi-zone sensor logging",
-        "Sub-2-minute thermal breach alerts",
+        "Real-time thermal breach alerts",
         "Dynamic shelf-life degradation tracking",
       ],
     },
@@ -141,7 +141,7 @@ export default function HmiNexusProductPage() {
       title: "Universal IoT Control Tower",
       desc: "Hardware-agnostic telematics aggregation streaming GPS, FASTag toll crossings, fuel levels, and door-opening sensors onto a single interactive pane of glass.",
       points: [
-        "80+ GPS vendor API connectors",
+        "Universal multi-vendor telematics sync",
         "FASTag toll gate crossing sync",
         "Exception-first operational dashboard",
       ],
@@ -169,7 +169,7 @@ export default function HmiNexusProductPage() {
     {
       icon: "shield",
       title: "Enterprise ERP & WMS Connectors",
-      desc: "Pre-built integration adapters for SAP, Oracle, and legacy transport databases, allowing zero-disruption rollout on top of your existing IT infrastructure.",
+      desc: "Pre-built integration adapters for enterprise resource planning and legacy transport databases, allowing zero-disruption rollout on top of existing IT infrastructure.",
       points: [
         "Enterprise REST APIs and webhooks",
         "Automated consignment manifest sync",
@@ -185,19 +185,19 @@ export default function HmiNexusProductPage() {
       desc: "Preventing perishables from passing critical thermal breakdown thresholds.",
     },
     {
-      value: "14-18%",
-      label: "Fewer Empty Miles",
-      desc: "Commercial return-load matching cutting unladen fuel and transit expenses.",
+      value: "Optimized",
+      label: "Backhaul Utilization",
+      desc: "Commercial return-load matching cutting unladen mileage and transit expenses.",
     },
     {
       value: "50+",
       label: "Enterprise Partners",
-      desc: "Trusted by India's largest retail hypermarkets, cooperatives, and freight networks.",
+      desc: "Trusted across leading retail hypermarkets, cooperatives, and freight networks.",
     },
     {
-      value: "3 Weeks",
-      label: "Fast Deployment",
-      desc: "Rapid onboarding via open APIs and hardware-agnostic telematics connectors.",
+      value: "Rapid",
+      label: "System Onboarding",
+      desc: "Streamlined rollout via open APIs and hardware-agnostic telematics connectors.",
     },
   ];
 
@@ -227,11 +227,11 @@ export default function HmiNexusProductPage() {
     },
     {
       q: "How does HMI Nexus help commercial logistics and retail enterprises?",
-      a: "HMI Nexus delivers verifiable economic value: up to a 24% reduction in perishable transit spoilage, 14–18% reduction in empty truck deadhead miles, 92%+ reliable delivery ETAs, and seamless digital quality reconciliation between rural suppliers and retail distribution centers.",
+      a: "HMI Nexus delivers verifiable operational value: up to a 24% reduction in perishable transit spoilage through proactive thermal telemetry, significant reduction in empty truck deadhead miles via predictive load matching, dependable delivery arrival windows, and seamless digital quality reconciliation between rural suppliers and retail distribution centers.",
     },
     {
       q: "How is HMI Nexus deployed within an enterprise?",
-      a: "HMI Nexus is available as a cloud-hosted software platform with open REST APIs, hardware-agnostic IoT telematics integration, and dedicated enterprise connectors for SAP, Oracle, and custom WMS systems. Full operational deployment typically takes less than 3 weeks.",
+      a: "HMI Nexus is available as a cloud-hosted software platform with open REST APIs, hardware-agnostic IoT telematics integration, and dedicated enterprise connectors for ERP and custom WMS systems, enabling rapid and structured operational rollout.",
     },
     {
       q: "How does HMI Nexus differ from software offered by hunchmind.com?",

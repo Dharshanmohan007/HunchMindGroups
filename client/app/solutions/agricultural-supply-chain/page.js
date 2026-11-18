@@ -109,7 +109,7 @@ export default function AgriculturalSupplyChainPage() {
     },
     {
       title: "Devastating Post-Harvest Spoilage",
-      desc: "Lack of immediate pack-house pre-cooling and unconditioned transit causes up to 30% of perishable horticulture to decompose before reaching store shelves.",
+      desc: "Lack of immediate pack-house pre-cooling and unconditioned transit causes extensive perishable horticulture decomposition before reaching store shelves.",
       stat: "Billions in preventable post-harvest losses annually",
     },
   ];
@@ -184,18 +184,18 @@ export default function AgriculturalSupplyChainPage() {
       desc: "Achieved through rapid post-harvest chilling and monitored cold transit.",
     },
     {
-      value: "15-20%",
-      label: "Higher Farmgate Return",
+      value: "Direct",
+      label: "Farmgate Realization",
       desc: "Direct procurement models pass intermediary markup directly to growers.",
     },
     {
       value: "50+",
       label: "Ecosystem Partners",
-      desc: "Connecting rural agricultural cooperatives with India's largest retail hypermarkets.",
+      desc: "Connecting rural agricultural cooperatives with leading retail hypermarkets.",
     },
     {
-      value: "< 24 hrs",
-      label: "Farm to Retail Shelf",
+      value: "Direct",
+      label: "Farm-to-Store Cycle",
       desc: "Accelerated logistics routing delivering fresher produce to consumer baskets.",
     },
   ];

@@ -61,7 +61,7 @@ const faqSchema = {
       name: "How does predictive freight routing cut commercial freight operating costs?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "By replacing static route planning with dynamic machine learning algorithms that evaluate live toll tariffs, historical truck congestion bottlenecks, commercial vehicle height/weight restrictions, and backhaul load availability. This reduces empty return trips (deadhead miles) by 14–18% and trims fuel consumption.",
+        text: "By replacing static route planning with dynamic machine learning algorithms that evaluate live toll tariffs, historical truck congestion bottlenecks, commercial vehicle height/weight restrictions, and backhaul load availability. This significantly reduces empty return trips (deadhead miles) and trims unnecessary fuel consumption through optimal highway corridor routing.",
       },
     },
     {
@@ -90,8 +90,8 @@ export default function PredictiveFreightRoutingPage() {
   ];
 
   const heroMetrics = [
-    { value: "14-18%", label: "Deadhead Miles Cut" },
-    { value: "12-15%", label: "Fuel Cost Savings" },
+    { value: "Optimized", label: "Deadhead Reduction" },
+    { value: "Direct", label: "Fuel Savings" },
     { value: "Multimodal", label: "Road & Rail Sync" },
     { value: "Pan-India", label: "Freight Lanes" },
   ];
@@ -100,7 +100,7 @@ export default function PredictiveFreightRoutingPage() {
     {
       title: "Costly Empty Return Trips",
       desc: "Commercial trucks running one-way freight regularly return empty back to origin, forcing shippers to pay high two-way freight charges to cover contractor fuel.",
-      stat: "Empty runs account for up to 30% of carrier overhead",
+      stat: "Empty runs constitute major carrier overhead",
     },
     {
       title: "Passenger Navigation Pitfalls",
@@ -179,18 +179,18 @@ export default function PredictiveFreightRoutingPage() {
 
   const impactMetrics = [
     {
-      value: "14-18%",
+      value: "Optimized",
       label: "Deadhead Reduction",
       desc: "Measurable decrease in unladen kilometers through automated return freight assignment.",
     },
     {
-      value: "12-15%",
+      value: "Efficient",
       label: "Fuel Conservation",
       desc: "Lower diesel expenditure through bypass lane optimization and optimal cruise speeds.",
     },
     {
-      value: "95%+",
-      label: "Time Window Success",
+      value: "High",
+      label: "On-Time Compliance",
       desc: "Consistently meeting strict distribution center and store receiving dock cutoffs.",
     },
     {
@@ -222,7 +222,7 @@ export default function PredictiveFreightRoutingPage() {
   const faqs = [
     {
       q: "How does predictive freight routing cut commercial freight operating costs?",
-      a: "By replacing static route planning with dynamic machine learning algorithms that evaluate live toll tariffs, historical truck congestion bottlenecks, commercial vehicle height/weight restrictions, and backhaul load availability. This reduces empty return trips (deadhead miles) by 14–18% and trims fuel consumption.",
+      a: "By replacing static route planning with dynamic machine learning algorithms that evaluate live toll tariffs, historical truck congestion bottlenecks, commercial vehicle height/weight restrictions, and backhaul load availability. This significantly reduces empty return trips (deadhead miles) and trims unnecessary fuel consumption through optimal highway corridor routing.",
     },
     {
       q: "What multimodal transit combinations does HMI Nexus support in India?",
