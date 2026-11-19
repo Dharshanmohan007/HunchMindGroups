@@ -13,31 +13,31 @@ export default function AboutSection() {
           {/* Left Column: Centered on mobile & tablet, left-aligned on desktop */}
           <div className="lg:col-span-4 lg:pr-2 max-w-lg mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
             <ScrollReveal direction="left" className="w-full flex flex-col items-center lg:items-start">
-              {/* Top Label: Dash + ABOUT HUNCHMIND GROUP (Centered on mobile/tab) */}
+              {/* Top Label: Dash + ABOUT HUNCHMIND INTELLIGENCE & GROUP (Centered on mobile/tab) */}
               <div className="flex items-center justify-center lg:justify-start gap-2 mb-3.5">
                 <span className="w-5 h-[2px] bg-[#005B62] rounded-full inline-block" />
                 <span className="text-[11px] font-bold tracking-[0.25em] text-[#005B62] uppercase">
-                  About HunchMind Group
+                  About HunchMind Intelligence
                 </span>
               </div>
 
               {/* Main Heading: Centered on mobile/tab */}
               <h2 className="font-sans font-bold text-2xl sm:text-3xl md:text-[38px] lg:text-[40px] text-[#102638] leading-[1.12] tracking-tight mb-3.5 text-center lg:text-left">
-                A Parent Company for<br />
-                <span className="text-[#005B62]">AI-Driven Businesses.</span>
+                Enterprise AI Solutions by<br />
+                <span className="text-[#005B62]">HunchMind Group.</span>
               </h2>
 
               {/* Description Paragraph: Centered on mobile/tab */}
               <p className="text-xs sm:text-sm md:text-[15px] text-[#536573] leading-relaxed mb-5 font-normal text-center lg:text-left max-w-md lg:max-w-none mx-auto lg:mx-0">
-                We create, invest and scale technology businesses that deliver measurable and sustainable impact.
+                <strong>HunchMind Intelligence</strong> is the enterprise AI, data decision, and supply chain technology arm of <strong>HunchMind Group</strong>. We build and deploy mission-critical software architectures, predictive freight algorithms, and platforms like <strong>HMI Nexus</strong> to eliminate operational friction across commerce and agriculture.
               </p>
 
-              {/* Know More Button: Centered on mobile/tab */}
+              {/* Know More Button: Links to dedicated /about company page */}
               <a
-                href="#ecosystem"
+                href="/about"
                 className="group inline-flex items-center gap-2 bg-[#005B62] hover:bg-[#00474F] text-white text-[13.5px] font-semibold px-6 py-2.5 rounded-full shadow-[0_6px_18px_rgba(0,91,98,0.22)] hover:shadow-[0_10px_24px_rgba(0,91,98,0.30)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer w-fit mx-auto lg:mx-0"
               >
-                <span>Know More</span>
+                <span>About HunchMind Intelligence</span>
                 <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#65DDE0]" />
               </a>
             </ScrollReveal>

@@ -149,7 +149,7 @@ export default function Header() {
             </a>
 
             <a
-              href="/#about"
+              href="/about"
               className="hover:text-[#005B62] transition-colors py-1"
             >
               About
@@ -286,7 +286,7 @@ export default function Header() {
               Home
             </a>
             <a
-              href="/#about"
+              href="/about"
               onClick={() => setMobileMenuOpen(false)}
               className="hover:text-[#005B62]"
             >

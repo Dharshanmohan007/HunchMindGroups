@@ -30,6 +30,12 @@ export default function sitemap() {
       priority: 1.0,
     },
     {
+      url: `${baseUrl}/about`,
+      lastModified: getFileMtime("app/about/page.js"),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/products/hmi-nexus`,
       lastModified: getFileMtime("app/products/hmi-nexus/page.js"),
       changeFrequency: "weekly",

@@ -44,54 +44,51 @@ export default function HeroSection() {
         {/* Left Column: Heading, Subtitle, CTAs, Social Proof */}
         <div className="w-full lg:w-[52%] xl:w-[48%] max-w-[580px] text-left">
           
-          {/* Label: Dash + HUNCHMIND GROUP */}
+          {/* Label: Dash + HUNCHMIND INTELLIGENCE */}
           <ScrollReveal direction="down" delay={100}>
             <div className="flex items-center gap-2.5 mb-5">
               <span className="w-6 h-[2px] bg-[#65DDE0] rounded-full inline-block" />
               <span className="text-xs font-bold tracking-[0.25em] text-white/95 uppercase">
-                HunchMind Group
+                HunchMind Intelligence
               </span>
             </div>
           </ScrollReveal>
 
           {/* Main Heading */}
           <ScrollReveal direction="up" delay={200}>
-            <h1 className="font-serif text-[40px] sm:text-[50px] md:text-[58px] lg:text-[64px] leading-[1.08] text-white font-bold tracking-tight mb-6">
-              Building AI Businesses<br />
-              for a <span className="text-[#65DDE0] italic font-serif font-normal">More Efficient</span><br />
-              and <span className="text-[#65DDE0] italic font-serif font-normal">Sustainable World.</span>
+            <h1 className="font-serif text-[36px] sm:text-[46px] md:text-[54px] lg:text-[60px] leading-[1.08] text-white font-bold tracking-tight mb-6">
+              <span className="block text-white">HunchMind Intelligence</span>
+              Enterprise AI, Data &amp; <span className="text-[#65DDE0] italic font-serif font-normal">Logistics Solutions.</span>
             </h1>
           </ScrollReveal>
 
           {/* Subtitle Description */}
           <ScrollReveal direction="up" delay={300}>
             <p className="text-white/90 text-base sm:text-lg md:text-[19px] font-light leading-relaxed max-w-[540px] mb-8">
-              A technology group that creates, invests and scales data-driven businesses across supply chain, agriculture, commerce and beyond.
+              The applied enterprise AI and logistics technology arm of <strong>HunchMind Group</strong>, developing data decision engines and connected supply chain platforms including <strong>HMI Nexus</strong>.
             </p>
           </ScrollReveal>
 
           {/* Buttons: Primary (White Pill with dark text) + Secondary (Translucent pill with border) */}
           <ScrollReveal direction="up" delay={400}>
             <div className="flex flex-wrap items-center gap-4 sm:gap-5 mb-8">
-              {/* Primary button in reference image: White rounded pill with dark text */}
+              {/* Primary button: About HunchMind Intelligence */}
               <a
-                href="#ecosystem"
+                href="/about"
                 className="group inline-flex items-center gap-2.5 bg-white hover:bg-slate-50 text-[#102638] text-[15px] font-semibold px-7 sm:px-8 py-3.5 sm:py-4 rounded-full shadow-[0_10px_25px_rgba(0,0,0,0.18)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.25)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
               >
-                <span>Explore Our Ecosystem</span>
+                <span>About HunchMind Intelligence</span>
                 <ArrowUpRight size={17} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#005B62]" />
               </a>
 
-              {/* Secondary button: Translucent with play icon */}
-              <button
-                type="button"
-                className="inline-flex items-center gap-2.5 text-white hover:text-white/90 font-medium text-[15px] px-6 py-3.5 sm:py-4 rounded-full bg-white/10 hover:bg-white/15 border border-white/30 backdrop-blur-sm transition-all duration-300 cursor-pointer group"
+              {/* Secondary button: Explore Platforms */}
+              <a
+                href="#ecosystem"
+                className="inline-flex items-center gap-2 text-white hover:text-white/90 font-medium text-[15px] px-6 py-3.5 sm:py-4 rounded-full bg-white/10 hover:bg-white/15 border border-white/30 backdrop-blur-sm transition-all duration-300 cursor-pointer group"
               >
-                <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center group-hover:scale-105 transition-transform">
-                  <Play size={10} className="fill-[#00474F] text-[#00474F] ml-0.5" />
-                </div>
-                <span>Watch Overview</span>
-              </button>
+                <span>Explore Ecosystem</span>
+                <ArrowUpRight size={15} className="text-[#65DDE0] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
             </div>
           </ScrollReveal>
 

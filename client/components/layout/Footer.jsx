@@ -116,7 +116,7 @@ export default function Footer() {
               {/* Row 1: Core Navigation */}
               <div className="flex flex-wrap items-center gap-3 sm:gap-4 w-full">
                 <a href="/" className="hover:text-[#65DDE0] transition-colors">Home</a>
-                <a href="/#about" className="hover:text-[#65DDE0] transition-colors">About</a>
+                <a href="/about" className="hover:text-[#65DDE0] transition-colors">About Us</a>
                 <a href="/products/hmi-nexus" className="hover:text-[#65DDE0] transition-colors text-[#65DDE0] font-semibold">HMI Nexus</a>
                 <a href="/solutions/ai-logistics-intelligence" className="hover:text-[#65DDE0] transition-colors">AI Logistics</a>
               </div>
@@ -183,7 +183,7 @@ export default function Footer() {
           
           {/* Copyright */}
           <div>
-            © 2026 HunchMind Group. All rights reserved.
+            © 2026 HunchMind Intelligence &amp; HunchMind Group. All rights reserved.
           </div>
 
           {/* Legal Links & Socials (Evenly balanced across mobile) */}

@@ -15,7 +15,7 @@ export default function EcosystemSection() {
       iconBg: "bg-amber-50",
       accentBorder: "group-hover:border-amber-400",
       badge: "AI & Decisions",
-      href: "#contact",
+      href: "/about",
     },
     {
       name: "HMI Nexus",
@@ -26,7 +26,7 @@ export default function EcosystemSection() {
       iconBg: "bg-[#DFF8F7]",
       accentBorder: "group-hover:border-[#65DDE0]",
       badge: "Logistics Hub",
-      href: "#contact",
+      href: "/products/hmi-nexus",
     },
     {
       name: "HunchMind Ventures",
@@ -72,10 +72,10 @@ export default function EcosystemSection() {
 
           <ScrollReveal direction="right">
             <a
-              href="#ecosystem"
+              href="/products/hmi-nexus"
               className="group inline-flex items-center gap-1.5 text-[#005B62] hover:text-[#00474F] font-semibold text-xs sm:text-sm transition-colors pb-0.5 border-b border-transparent hover:border-[#005B62] cursor-pointer"
             >
-              <span>View All Products</span>
+              <span>Explore HMI Nexus</span>
               <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </ScrollReveal>

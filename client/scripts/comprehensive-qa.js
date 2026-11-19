@@ -12,6 +12,11 @@ const EXPECTED_PAGES = [
     schemaTypes: ["Organization", "WebSite", "ItemList"],
   },
   {
+    path: "/about",
+    expectedCanonical: "https://www.hunchmindintelligence.com/about",
+    schemaTypes: ["AboutPage", "BreadcrumbList", "FAQPage"],
+  },
+  {
     path: "/products/hmi-nexus",
     expectedCanonical: "https://www.hunchmindintelligence.com/products/hmi-nexus",
     schemaTypes: ["Product", "BreadcrumbList", "FAQPage"],
@@ -232,9 +237,9 @@ async function runQA() {
   if (sitemapRes.status === 200 && sitemapRes.headers["content-type"].includes("xml")) {
     console.log(`  ✓ /sitemap.xml Status: 200 OK (${sitemapRes.headers["content-type"]})`);
     const locMatches = sitemapRes.body.match(/<loc>([^<]+)<\/loc>/g) || [];
-    console.log(`  ✓ Total URLs in sitemap: ${locMatches.length} (Expected: 7)`);
-    if (locMatches.length === 7) {
-      console.log(`  ✓ Sitemap contains exactly 7 canonical URLs:`);
+    console.log(`  ✓ Total URLs in sitemap: ${locMatches.length} (Expected: 8)`);
+    if (locMatches.length === 8) {
+      console.log(`  ✓ Sitemap contains exactly 8 canonical URLs:`);
       for (const loc of locMatches) {
         const cleanLoc = loc.replace("<loc>", "").replace("</loc>", "");
         console.log(`    - ${cleanLoc}`);
@@ -244,7 +249,7 @@ async function runQA() {
         }
       }
     } else {
-      console.error(`  ✗ Sitemap URL count mismatch: found ${locMatches.length}, expected 7`);
+      console.error(`  ✗ Sitemap URL count mismatch: found ${locMatches.length}, expected 8`);
       totalErrors++;
     }
   } else {
