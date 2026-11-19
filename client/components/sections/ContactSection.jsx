@@ -203,7 +203,7 @@ export default function ContactSection() {
                       Direct Email Inquiry
                     </span>
                     <span className="text-sm font-semibold text-[#102638] group-hover:text-[#005B62] transition-colors break-all">
-                      hunchmindintelligence@gmail.com
+                      hunchmind.contact@gmail.com
                     </span>
                   </div>
                 </a>
