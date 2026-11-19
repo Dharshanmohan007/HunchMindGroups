@@ -1,354 +1,393 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import { ChevronDown, ArrowUpRight, Menu, X, Cpu, Layers, Sprout, FlaskConical } from "lucide-react";
-
-// Dynamic Logo Configuration: Update or replace imageSrc / values when the final logo asset is provided
-export const LOGO_CONFIG = {
-  useImage: false, // Set to true when an image file (e.g., /images/logo.png or /images/logo.svg) is provided
-  imageSrc: "/images/logo.png",
-  altText: "HunchMind Group Logo",
-  companyName: "HunchMind",
-  companySubtitle: "Group",
-  tagline: "Ideas into Reality",
-};
+import { ChevronDown, ArrowUpRight, Menu, X, Cpu, Layers, Sprout, FlaskConical, Snowflake, Navigation, Radio } from "lucide-react";
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const productsRef = useRef(null);
+  const solutionsRef = useRef(null);
+  const resourcesRef = useRef(null);
 
-  // Close dropdown when clicking outside
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (productsRef.current && !productsRef.current.contains(event.target)) {
         setProductsOpen(false);
+      }
+      if (solutionsRef.current && !solutionsRef.current.contains(event.target)) {
+        setSolutionsOpen(false);
+      }
+      if (resourcesRef.current && !resourcesRef.current.contains(event.target)) {
+        setResourcesOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const products = [
-    {
-      name: "HMI Nexus Platform",
-      desc: "Flagship Supply Chain Intelligence OS",
-      icon: Sprout,
-      color: "text-emerald-600",
-      bgColor: "bg-emerald-50",
-      href: "/products/hmi-nexus",
-    },
+  const solutions = [
     {
       name: "AI Logistics Intelligence",
-      desc: "Enterprise Decision Engines & Analytics",
-      icon: Cpu,
-      color: "text-amber-500",
-      bgColor: "bg-amber-50",
+      desc: "Enterprise decision engines & algorithms",
       href: "/solutions/ai-logistics-intelligence",
+      icon: Cpu,
     },
     {
       name: "Cold Chain Logistics",
-      desc: "Up to 24% Perishable Spoilage Reduction",
-      icon: Layers,
-      color: "text-cyan-600",
-      bgColor: "bg-cyan-50",
+      desc: "Real-time perishable spoilage reduction",
       href: "/solutions/cold-chain-logistics",
-    },
-    {
-      name: "Predictive Freight Routing",
-      desc: "Multimodal & Deadhead Mile Optimization",
-      icon: FlaskConical,
-      color: "text-purple-600",
-      bgColor: "bg-purple-50",
-      href: "/solutions/predictive-freight-routing",
-    },
-    {
-      name: "Agricultural Supply Chain",
-      desc: "Farmgate-to-Retail Mandi Intelligence",
-      icon: Sprout,
-      color: "text-emerald-600",
-      bgColor: "bg-emerald-50",
-      href: "/solutions/agricultural-supply-chain",
+      icon: Snowflake,
     },
     {
       name: "Supply Chain Visibility & IoT",
-      desc: "Real-Time Sensor & Fleet Telemetry",
-      icon: Cpu,
-      color: "text-cyan-600",
-      bgColor: "bg-cyan-50",
+      desc: "End-to-end fleet & sensor telemetry",
       href: "/solutions/supply-chain-visibility-iot",
+      icon: Radio,
+    },
+    {
+      name: "Predictive Freight Routing",
+      desc: "Route optimization & fuel reduction",
+      href: "/solutions/predictive-freight-routing",
+      icon: Navigation,
+    },
+    {
+      name: "Agricultural Supply Chain",
+      desc: "Farmgate-to-retail commodity tracking",
+      href: "/solutions/agricultural-supply-chain",
+      icon: Sprout,
+    },
+  ];
+
+  const products = [
+    {
+      name: "HMI Nexus Platform",
+      desc: "Supply chain intelligence for agri & perishables",
+      href: "/products/hmi-nexus",
+      icon: Sprout,
+    },
+    {
+      name: "HunchMind Intelligence",
+      desc: "Applied AI decision systems for enterprise",
+      href: "/about",
+      icon: Cpu,
+    },
+    {
+      name: "HunchMind Ventures",
+      desc: "Incubating & scaling next-gen businesses",
+      href: "/about",
+      icon: Layers,
+    },
+    {
+      name: "HunchMind Labs",
+      desc: "Applied research, R&D and experimentation",
+      href: "/about",
+      icon: FlaskConical,
     },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      
-      {/* Main Navbar Bar (Solid clean white background matching reference image 4) */}
-      <div
-        className={`w-full bg-white transition-all duration-300 ${
-          scrolled
-            ? "shadow-[0_4px_25px_rgba(0,0,0,0.08)] py-3 px-4 md:px-10"
-            : "py-3.5 sm:py-4 px-4 md:px-10"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="relative w-full h-[68px] sm:h-[72px]">
+        
+        {/* Exact Flared Concave Curved SVG Background matching Image 1 */}
+        <div className="absolute inset-0 pointer-events-none drop-shadow-[0_4px_18px_rgba(5,50,55,0.06)]">
+          <svg
+            viewBox="0 0 1440 76"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-full"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M 0,0 L 1440,0 L 1440,38 C 1390,62 1340,76 1280,76 L 160,76 C 100,76 50,62 0,38 Z"
+              fill="#FFFFFF"
+            />
+          </svg>
+        </div>
+
+        {/* Navbar Content */}
+        <div className="relative z-10 max-w-[1360px] mx-auto h-full px-5 sm:px-8 lg:px-14 flex items-center justify-between">
           
-          {/* Dynamic Brand Logo */}
-          <a href="/" className="flex items-center gap-2.5 group cursor-pointer" aria-label={LOGO_CONFIG.altText}>
-            {LOGO_CONFIG.useImage ? (
-              <div className="relative h-8 sm:h-9 w-auto min-w-[32px] flex items-center">
-                <Image
-                  src={LOGO_CONFIG.imageSrc}
-                  alt={LOGO_CONFIG.altText}
-                  width={140}
-                  height={36}
-                  priority
-                  className="h-8 sm:h-9 w-auto object-contain group-hover:scale-105 transition-transform"
-                />
-              </div>
-            ) : (
-              <>
-                <div className="w-8 sm:w-9 h-8 sm:h-9 flex items-center justify-center shrink-0">
-                  <svg viewBox="0 0 36 36" fill="none" className="w-full h-full transform group-hover:scale-105 transition-transform">
-                    {/* Stylized geometric M monogram in teal and cyan gradient */}
-                    <path d="M4 29V7L14 20L22 10L32 23V29" stroke="#005B62" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M14 20L22 10L32 23" stroke="#65DDE0" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <div className="leading-tight flex flex-col justify-center">
-                  <span className="font-sans font-bold text-lg sm:text-[19px] tracking-tight text-[#102638] leading-none">
-                    {LOGO_CONFIG.companyName}
-                  </span>
-                  <span className="font-sans font-bold text-base sm:text-[17px] tracking-tight text-[#102638] leading-tight">
-                    {LOGO_CONFIG.companySubtitle}
-                  </span>
-                </div>
-              </>
-            )}
+          {/* Official Brand Logo: Variant 2 NAV BAR LOGO from Brand Sheet */}
+          <a
+            href="/"
+            className="flex items-center group cursor-pointer py-1"
+            aria-label="HunchMind Intelligence Home"
+          >
+            <img
+              src="/assets/hunchmind-navbar-logo.png"
+              alt="HunchMind Intelligence"
+              className="h-9 sm:h-10 w-auto object-contain transform group-hover:scale-[1.02] transition-transform"
+            />
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7 lg:gap-8 text-[14px] font-medium text-[#102638]">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-[13.5px] font-semibold text-[#122333]">
             {/* Home with active teal indicator underline */}
             <a
               href="/"
-              className="text-[#005B62] font-semibold relative py-1 hover:text-[#00363C] transition-colors"
+              className="text-[#087d78] font-bold relative py-1 transition-colors group flex flex-col items-center"
             >
-              Home
+              <span>Home</span>
+              <span className="w-6 h-[2.5px] bg-[#087d78] rounded-full mt-0.5" />
             </a>
 
             <a
               href="/about"
-              className="hover:text-[#005B62] transition-colors py-1"
+              className="hover:text-[#087d78] transition-colors py-1"
             >
               About
             </a>
 
             {/* Products Dropdown */}
-            <div className="relative" ref={dropdownRef}>
+            <div className="relative" ref={productsRef}>
               <button
                 type="button"
-                onClick={() => setProductsOpen(!productsOpen)}
-                className="flex items-center gap-1 hover:text-[#005B62] transition-colors py-1 cursor-pointer font-medium"
+                onClick={() => {
+                  setProductsOpen(!productsOpen);
+                  setSolutionsOpen(false);
+                  setResourcesOpen(false);
+                }}
+                className="flex items-center gap-1 hover:text-[#087d78] transition-colors py-1 cursor-pointer font-semibold"
               >
-                <span>Products & Solutions</span>
+                <span>Products</span>
                 <ChevronDown
-                  size={14}
-                  className={`transition-transform duration-200 ${productsOpen ? "rotate-180 text-[#005B62]" : ""}`}
+                  size={13}
+                  className={`transition-transform duration-200 ${productsOpen ? "rotate-180 text-[#087d78]" : ""}`}
                 />
               </button>
 
-              {/* Products Dropdown Menu */}
               {productsOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-88 bg-white rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.12)] border border-[#E2ECEB] p-2.5 z-50 animate-in fade-in duration-200">
-                  <div className="text-[11px] font-bold tracking-wider text-[#536573] uppercase px-3 py-1.5 border-b border-[#E2ECEB]/60 mb-1">
-                    Group Platforms & Solutions
+                <div className="absolute top-full left-0 mt-3 w-72 bg-white rounded-2xl shadow-[0_15px_40px_rgba(4,65,69,0.12)] border border-[#e0ebea] p-2 z-50 animate-in fade-in duration-150">
+                  <div className="text-[10px] font-extrabold tracking-wider text-[#53636a] uppercase px-3 py-1.5 border-b border-[#e0ebea]/70 mb-1">
+                    Businesses & Platforms
                   </div>
-                  <div className="space-y-1">
-                    {products.map((p, idx) => {
-                      const Icon = p.icon;
-                      return (
-                        <a
-                          key={idx}
-                          href={p.href}
-                          onClick={() => setProductsOpen(false)}
-                          className="flex items-start gap-3 p-2 rounded-xl hover:bg-[#F7FAFA] transition-colors group cursor-pointer"
-                        >
-                          <div className={`w-8 h-8 rounded-lg ${p.bgColor} ${p.color} flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform`}>
-                            <Icon size={16} />
+                  {products.map((item, idx) => {
+                    const Icon = item.icon;
+                    return (
+                      <a
+                        key={idx}
+                        href={item.href}
+                        onClick={() => setProductsOpen(false)}
+                        className="flex items-start gap-2.5 p-2 rounded-xl hover:bg-[#f3faf9] transition-colors group cursor-pointer"
+                      >
+                        <div className="w-7 h-7 rounded-lg bg-[#e9f8f5] text-[#087d78] flex items-center justify-center shrink-0 mt-0.5">
+                          <Icon size={14} />
+                        </div>
+                        <div>
+                          <div className="text-xs font-bold text-[#122333] group-hover:text-[#087d78] transition-colors">
+                            {item.name}
                           </div>
-                          <div>
-                            <div className="text-xs font-bold text-[#102638] group-hover:text-[#005B62] transition-colors">
-                              {p.name}
-                            </div>
-                            <div className="text-[11px] text-[#536573] leading-snug">
-                              {p.desc}
-                            </div>
+                          <div className="text-[10.5px] text-[#53636a] leading-tight">
+                            {item.desc}
                           </div>
-                        </a>
-                      );
-                    })}
+                        </div>
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* Solutions Dropdown */}
+            <div className="relative" ref={solutionsRef}>
+              <button
+                type="button"
+                onClick={() => {
+                  setSolutionsOpen(!solutionsOpen);
+                  setProductsOpen(false);
+                  setResourcesOpen(false);
+                }}
+                className="flex items-center gap-1 hover:text-[#087d78] transition-colors py-1 cursor-pointer font-semibold"
+              >
+                <span>Solutions</span>
+                <ChevronDown
+                  size={13}
+                  className={`transition-transform duration-200 ${solutionsOpen ? "rotate-180 text-[#087d78]" : ""}`}
+                />
+              </button>
+
+              {solutionsOpen && (
+                <div className="absolute top-full left-0 mt-3 w-80 bg-white rounded-2xl shadow-[0_15px_40px_rgba(4,65,69,0.12)] border border-[#e0ebea] p-2 z-50 animate-in fade-in duration-150">
+                  <div className="text-[10px] font-extrabold tracking-wider text-[#53636a] uppercase px-3 py-1.5 border-b border-[#e0ebea]/70 mb-1">
+                    Industry Solutions
                   </div>
+                  {solutions.map((item, idx) => {
+                    const Icon = item.icon;
+                    return (
+                      <a
+                        key={idx}
+                        href={item.href}
+                        onClick={() => setSolutionsOpen(false)}
+                        className="flex items-start gap-2.5 p-2 rounded-xl hover:bg-[#f3faf9] transition-colors group cursor-pointer"
+                      >
+                        <div className="w-7 h-7 rounded-lg bg-[#e9f8f5] text-[#087d78] flex items-center justify-center shrink-0 mt-0.5">
+                          <Icon size={14} />
+                        </div>
+                        <div>
+                          <div className="text-xs font-bold text-[#122333] group-hover:text-[#087d78] transition-colors">
+                            {item.name}
+                          </div>
+                          <div className="text-[10.5px] text-[#53636a] leading-tight">
+                            {item.desc}
+                          </div>
+                        </div>
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* Resources Dropdown */}
+            <div className="relative" ref={resourcesRef}>
+              <button
+                type="button"
+                onClick={() => {
+                  setResourcesOpen(!resourcesOpen);
+                  setProductsOpen(false);
+                  setSolutionsOpen(false);
+                }}
+                className="flex items-center gap-1 hover:text-[#087d78] transition-colors py-1 cursor-pointer font-semibold"
+              >
+                <span>Resources</span>
+                <ChevronDown
+                  size={13}
+                  className={`transition-transform duration-200 ${resourcesOpen ? "rotate-180 text-[#087d78]" : ""}`}
+                />
+              </button>
+
+              {resourcesOpen && (
+                <div className="absolute top-full left-0 mt-3 w-64 bg-white rounded-2xl shadow-[0_15px_40px_rgba(4,65,69,0.12)] border border-[#e0ebea] p-2 z-50 animate-in fade-in duration-150">
+                  <a
+                    href="#blogs"
+                    onClick={() => setResourcesOpen(false)}
+                    className="block p-2 rounded-xl hover:bg-[#f3faf9] text-xs font-bold text-[#122333] hover:text-[#087d78] transition-colors"
+                  >
+                    <div>Latest Insights &amp; Blogs</div>
+                    <div className="text-[10.5px] text-[#53636a] font-normal">Technology &amp; supply chain articles</div>
+                  </a>
+                  <a
+                    href="/about"
+                    onClick={() => setResourcesOpen(false)}
+                    className="block p-2 rounded-xl hover:bg-[#f3faf9] text-xs font-bold text-[#122333] hover:text-[#087d78] transition-colors mt-1"
+                  >
+                    <div>About HunchMind Group</div>
+                    <div className="text-[10.5px] text-[#53636a] font-normal">Company mission &amp; architecture</div>
+                  </a>
                 </div>
               )}
             </div>
 
             <a
-              href="/#partners"
-              className="hover:text-[#005B62] transition-colors py-1"
+              href="/about#careers"
+              className="hover:text-[#087d78] transition-colors py-1"
             >
-              Clients
+              Careers
             </a>
 
             <a
-              href="/#focus"
-              className="hover:text-[#005B62] transition-colors py-1"
+              href="#contact"
+              className="hover:text-[#087d78] transition-colors py-1"
             >
-              Network
-            </a>
-
-            <a
-              href="/#impact"
-              className="hover:text-[#005B62] transition-colors py-1"
-            >
-              Achievements
-            </a>
-
-            <a
-              href="/#blogs"
-              className="hover:text-[#005B62] transition-colors py-1"
-            >
-              Blogs
+              Contact
             </a>
           </nav>
 
-          {/* Right: Contact Us Button */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* Right Action: Pill Button Contact Us ↗ */}
+          <div className="flex items-center gap-3">
             <a
               href="#contact"
-              className="inline-flex items-center gap-1.5 bg-[#005B62] hover:bg-[#00474F] text-white text-[13.5px] font-semibold px-6 py-2.5 rounded-full shadow-[0_4px_15px_rgba(0,71,79,0.25)] hover:shadow-[0_6px_20px_rgba(0,91,98,0.35)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
+              className="inline-flex items-center justify-center gap-1.5 bg-[#005B62] hover:bg-[#00474F] text-white text-[12.5px] sm:text-[13px] font-semibold px-5 sm:px-6 py-2.5 rounded-full shadow-[0_4px_14px_rgba(0,91,98,0.22)] hover:shadow-[0_6px_20px_rgba(0,91,98,0.32)] transition-all transform hover:-translate-y-0.5 cursor-pointer"
             >
               <span>Contact Us</span>
-              <ArrowUpRight size={15} />
+              <span className="text-sm font-bold">↗</span>
             </a>
+
+            {/* Mobile Menu Toggle Button */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-1.5 rounded-lg text-[#087d78] hover:bg-[#f3faf9] transition-colors"
+              aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
 
-          {/* Mobile Hamburger Button */}
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl text-[#102638] hover:bg-[#F7FAFA] transition-colors cursor-pointer"
-            aria-label="Toggle mobile navigation menu"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-
         </div>
-      </div>
 
-      {/* Subtle Concave Wave Bottom Border of the Navbar (matching shared UI design, not too long) */}
-      <div className="relative w-full overflow-hidden leading-none z-10 pointer-events-none -mt-[1px]">
-        <svg
-          viewBox="0 0 1440 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-1.5 sm:h-2 md:h-2.5 preserve-3d"
-          preserveAspectRatio="none"
-        >
-          {/* Gentle, shallow concave curve matching the shared UI design */}
-          <path
-            d="M 0,0 L 1440,0 L 1440,2 C 1220,12 1020,14 860,14 L 580,14 C 420,14 220,12 0,2 Z"
-            fill="#FFFFFF"
-          />
-        </svg>
-      </div>
-
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white/98 backdrop-blur-xl border-b border-[#E2ECEB] shadow-2xl px-6 py-6 animate-in slide-in-from-top-4 duration-300">
-          <nav className="flex flex-col gap-4 text-base font-semibold text-[#102638]">
+        {/* Mobile Dropdown Navigation */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden bg-white mt-1 mx-4 p-4 rounded-2xl shadow-xl border border-[#e0ebea] space-y-2 relative z-50">
             <a
               href="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-[#005B62] font-bold"
+              className="block px-3 py-2 rounded-xl text-sm font-bold text-[#087d78] bg-[#f3faf9]"
             >
               Home
             </a>
             <a
               href="/about"
               onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-[#005B62]"
+              className="block px-3 py-2 rounded-xl text-sm font-semibold text-[#122333] hover:bg-[#f3faf9]"
             >
               About
             </a>
-            <div className="py-2 border-y border-[#E2ECEB]/60 space-y-2">
-              <span className="text-xs uppercase font-bold text-[#536573] tracking-wider">
-                Products & Solutions
-              </span>
-              <div className="pl-3 space-y-2 text-sm font-medium">
-                {products.map((p, idx) => (
-                  <a
-                    key={idx}
-                    href={p.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block hover:text-[#005B62]"
-                  >
-                    {p.name}
-                  </a>
-                ))}
-              </div>
+            <a
+              href="/products/hmi-nexus"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-2 rounded-xl text-sm font-semibold text-[#122333] hover:bg-[#f3faf9]"
+            >
+              Products &amp; Platforms (HMI Nexus)
+            </a>
+            <div className="px-3 py-1 text-xs font-bold text-[#53636a] uppercase">
+              Solutions
+            </div>
+            <div className="grid grid-cols-1 gap-1 pl-3">
+              {solutions.map((item, idx) => (
+                <a
+                  key={idx}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-2 py-1.5 rounded-lg text-xs font-medium text-[#122333] hover:bg-[#f3faf9] flex items-center justify-between"
+                >
+                  <span>{item.name}</span>
+                  <ArrowUpRight size={12} className="text-[#087d78]" />
+                </a>
+              ))}
             </div>
             <a
-              href="/#partners"
+              href="#blogs"
               onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-[#005B62]"
+              className="block px-3 py-2 rounded-xl text-sm font-semibold text-[#122333] hover:bg-[#f3faf9]"
             >
-              Clients
+              Resources &amp; Blogs
             </a>
             <a
-              href="/#focus"
+              href="/about#careers"
               onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-[#005B62]"
+              className="block px-3 py-2 rounded-xl text-sm font-semibold text-[#122333] hover:bg-[#f3faf9]"
             >
-              Network
-            </a>
-            <a
-              href="/#impact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-[#005B62]"
-            >
-              Achievements
-            </a>
-            <a
-              href="/#blogs"
-              onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-[#005B62]"
-            >
-              Blogs
+              Careers
             </a>
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="inline-flex items-center justify-center gap-2 bg-[#00474F] text-white py-3 rounded-full mt-2 font-semibold"
+              className="block px-3 py-2 rounded-xl text-sm font-semibold text-[#122333] hover:bg-[#f3faf9]"
             >
-              <span>Contact Us</span>
-              <ArrowUpRight size={16} />
+              Contact
             </a>
-          </nav>
-        </div>
-      )}
+          </div>
+        )}
 
+      </div>
     </header>
   );
 }

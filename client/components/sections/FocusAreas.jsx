@@ -1,91 +1,90 @@
 "use client";
 
-import { Truck, Sprout, ShoppingBag, Cpu, Leaf, Sparkles } from "lucide-react";
 import ScrollReveal from "../common/ScrollReveal";
 
 export default function FocusAreas() {
   const areas = [
     {
       title: "Supply Chain & Logistics",
-      desc: "Intelligent freight routing, fleet tracking & cold-chain management.",
-      icon: Truck,
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="#087d78" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+          <path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z" />
+          <circle cx="7.5" cy="19" r="1.5" />
+          <circle cx="17.5" cy="19" r="1.5" />
+        </svg>
+      ),
     },
     {
       title: "Agri & Food Systems",
-      desc: "Perishable supply chains, farm-to-retail tracking & price forecasting.",
-      icon: Sprout,
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="#087d78" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+          <path d="M12 21V11m0 4C5 15 4 9 4 5c6 0 9 3 8 10zm0-2c0-6 4-9 8-9 0 5-2 9-8 9z" />
+        </svg>
+      ),
     },
     {
       title: "Commerce & Consumer",
-      desc: "Unified commerce platforms, distribution networks & demand matching.",
-      icon: ShoppingBag,
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="#087d78" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+          <path d="M3 4h2l2 12h11l3-9H6" />
+          <circle cx="9" cy="20" r="1" />
+          <circle cx="17" cy="20" r="1" />
+        </svg>
+      ),
     },
     {
       title: "Data & AI Products",
-      desc: "Enterprise decision engines, predictive models & operational intelligence.",
-      icon: Cpu,
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="#087d78" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+      ),
     },
     {
       title: "Sustainability & Efficiency",
-      desc: "Resource optimization, zero-waste logistics & energy-efficient networks.",
-      icon: Leaf,
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="#087d78" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 6a6 6 0 0 1 6 6c0 3.3-2.7 6-6 6a6 6 0 0 1-6-6c0-3.3 2.7-6 6-6z" />
+          <path d="M12 8v8" />
+        </svg>
+      ),
     },
   ];
 
   return (
-    <section id="focus" className="py-6 sm:py-8 md:py-10 bg-[#FAFAFA] relative border-y border-[#E2ECEB]/40">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+    <section id="focus" className="py-4 sm:py-6 bg-[#FAFAFA] relative">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-14">
         
-        {/* Section Header */}
-        <div className="text-center mb-6 sm:mb-8">
-          <ScrollReveal direction="down">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8F8F7] text-[11px] font-bold tracking-[0.25em] text-[#005B62] mb-2 uppercase">
-              <Sparkles size={12} className="text-[#087D83]" />
-              <span>Our Focus Areas</span>
-            </div>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#102638] font-bold tracking-tight">
-              Transforming Critical Industries
-            </h2>
-            <p className="text-xs sm:text-sm text-[#536573] max-w-lg mx-auto mt-2">
-              Where technology, deep domain knowledge, and execution discipline intersect to create lasting value.
-            </p>
-          </ScrollReveal>
-        </div>
+        {/* Eyebrow: — OUR FOCUS AREAS */}
+        <ScrollReveal direction="left">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-6 h-[2px] bg-[#075e5c] rounded-full inline-block" />
+            <span className="text-[10.5px] font-extrabold tracking-[0.2em] text-[#075e5c] uppercase">
+              Our Focus Areas
+            </span>
+          </div>
+        </ScrollReveal>
 
-        {/* 5 Focus Areas Container */}
-        <ScrollReveal direction="up" delay={200}>
-          <div className="bg-white rounded-[10px] border border-[#E2ECEB] p-6 sm:p-8 md:p-10 shadow-[0_15px_40px_rgba(0,35,45,0.05)]">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-0 divide-y sm:divide-y-0 lg:divide-x divide-[#E2ECEB]">
-              {areas.map((area, idx) => {
-                const Icon = area.icon;
-                return (
-                  <div
-                    key={idx}
-                    className={`flex flex-col items-center text-center px-4 py-4 group cursor-default transition-transform duration-300 hover:-translate-y-1.5 ${
-                      idx !== 0 ? "lg:pl-6" : ""
-                    }`}
-                  >
-                    {/* Outline Icon Container */}
-                    <div className="w-14 h-14 rounded-xl bg-[#DFF8F7]/70 border border-[#65DDE0]/30 flex items-center justify-center mb-4 group-hover:bg-[#005B62] transition-colors duration-300 shadow-xs">
-                      <Icon
-                        size={26}
-                        strokeWidth={1.8}
-                        className="text-[#005B62] group-hover:text-white transition-colors duration-300 group-hover:scale-110 transform"
-                      />
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="font-sans font-bold text-base md:text-[17px] text-[#102638] group-hover:text-[#005B62] transition-colors mb-2 leading-snug">
-                      {area.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-xs text-[#536573] leading-relaxed">
-                      {area.desc}
-                    </p>
+        {/* Clean 5-Item Horizontal Bar with Vertical Dividers */}
+        <ScrollReveal direction="up" delay={150}>
+          <div className="bg-white border border-[#e0ebea] rounded-[18px] shadow-[0_4px_16px_rgba(4,65,69,0.05)] p-2 sm:p-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 divide-y sm:divide-y-0 lg:divide-x divide-[#dce9e8]">
+              {areas.map((area, idx) => (
+                <div
+                  key={idx}
+                  className={`flex items-center justify-center gap-3 py-2.5 px-3 group hover:bg-[#f8fdfc] transition-colors rounded-xl ${
+                    idx >= 4 ? "col-span-2 sm:col-span-1" : ""
+                  }`}
+                >
+                  <div className="shrink-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    {area.icon}
                   </div>
-                );
-              })}
+                  <span className="text-xs sm:text-[12.5px] font-bold text-[#122333] leading-tight">
+                    {area.title}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </ScrollReveal>
@@ -94,4 +93,3 @@ export default function FocusAreas() {
     </section>
   );
 }
-

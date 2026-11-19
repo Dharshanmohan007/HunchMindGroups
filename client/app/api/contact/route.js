@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 // Fallback recipient email if no env variable is provided.
-export const DEFAULT_CONTACT_EMAIL = "hunchmindintelligence@gmail.com";
+export const DEFAULT_CONTACT_EMAIL = "hunchmind.contact@gmail.com";
 
 function escapeHtml(text) {
   if (!text) return "";
@@ -39,7 +39,7 @@ export async function POST(request) {
     ).trim();
 
     const body = await request.json();
-    const { name, phone, email, purpose, message } = body;
+    const { name, phone, email, purpose, message, company } = body;
 
     // Server-side input validation
     const errors = {};
@@ -47,9 +47,11 @@ export async function POST(request) {
       errors.name = "Please provide your name (at least 2 characters).";
     }
 
-    const cleanPhone = phone ? phone.replace(/[\s\(\)\-\.]/g, "") : "";
-    if (!cleanPhone || cleanPhone.length < 10 || !/^\+?[0-9]{10,15}$/.test(cleanPhone)) {
-      errors.phone = "Please provide a valid phone number (at least 10 digits).";
+    if (phone && phone.trim()) {
+      const cleanPhone = phone.replace(/[\s\(\)\-\.]/g, "");
+      if (cleanPhone.length < 10 || !/^\+?[0-9]{10,15}$/.test(cleanPhone)) {
+        errors.phone = "Please provide a valid phone number (at least 10 digits).";
+      }
     }
 
     if (!email || typeof email !== "string" || !email.trim()) {
@@ -59,11 +61,11 @@ export async function POST(request) {
     }
 
     if (!purpose || typeof purpose !== "string" || purpose.trim().length === 0) {
-      errors.purpose = "Please select an inquiry category (Company or Career).";
+      errors.purpose = "Please select an inquiry type.";
     }
 
-    if (!message || typeof message !== "string" || message.trim().length < 10) {
-      errors.message = "Please write a message of at least 10 characters.";
+    if (!message || typeof message !== "string" || message.trim().length < 5) {
+      errors.message = "Please write a message.";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -74,9 +76,10 @@ export async function POST(request) {
     }
 
     const trimmedName = name.trim();
-    const trimmedPhone = phone.trim();
+    const trimmedPhone = phone ? phone.trim() : "";
     const trimmedEmail = email ? email.trim() : "";
     const trimmedPurpose = purpose.trim();
+    const trimmedCompany = company ? company.trim() : "";
     const trimmedMessage = message.trim();
     const submissionTime = new Date().toLocaleString("en-IN", {
       timeZone: "Asia/Kolkata",
@@ -88,8 +91,8 @@ export async function POST(request) {
     console.log("📥 NEW CONTACT INQUIRY RECEIVED");
     console.log(`To: ${RECIPIENT_EMAIL}`);
     console.log(`Sender Account (EMAIL_USER): ${GMAIL_USER || "Not configured"}`);
-    console.log(`From: ${trimmedName} (${trimmedPhone}, ${trimmedEmail || "No email"})`);
-    console.log(`Category: ${trimmedPurpose}`);
+    console.log(`From: ${trimmedName} (${trimmedCompany || "No company"}, ${trimmedPhone || "No phone"}, ${trimmedEmail || "No email"})`);
+    console.log(`Category/Inquiry: ${trimmedPurpose}`);
     console.log(`Message: ${trimmedMessage}`);
     console.log("==================================================");
 
@@ -118,9 +121,8 @@ export async function POST(request) {
 New Inquiry Received from HunchMind Website:
 
 Name: ${trimmedName}
-Phone: ${trimmedPhone}
-Email: ${trimmedEmail || "Not provided"}
-Category: ${trimmedPurpose}
+${trimmedCompany ? `Company: ${trimmedCompany}\n` : ""}${trimmedPhone ? `Phone: ${trimmedPhone}\n` : ""}Email: ${trimmedEmail || "Not provided"}
+Inquiry Type: ${trimmedPurpose}
 Submitted: ${submissionTime} IST
 
 Message:
@@ -161,12 +163,18 @@ ${trimmedMessage}
             <td style="padding: 10px 0; color: #536573; font-weight: 600; width: 120px;">Sender Name:</td>
             <td style="padding: 10px 0; color: #102638; font-weight: 700;">${escapeHtml(trimmedName)}</td>
           </tr>
+          ${trimmedCompany ? `
+          <tr style="border-bottom: 1px solid #f0f5f5;">
+            <td style="padding: 10px 0; color: #536573; font-weight: 600;">Company:</td>
+            <td style="padding: 10px 0; color: #102638; font-weight: 600;">${escapeHtml(trimmedCompany)}</td>
+          </tr>` : ""}
+          ${trimmedPhone ? `
           <tr style="border-bottom: 1px solid #f0f5f5;">
             <td style="padding: 10px 0; color: #536573; font-weight: 600;">Phone:</td>
             <td style="padding: 10px 0; color: #005B62; font-weight: 600;">
               <a href="tel:${escapeHtml(trimmedPhone)}" style="color: #005B62; text-decoration: none;">${escapeHtml(trimmedPhone)}</a>
             </td>
-          </tr>
+          </tr>` : ""}
           <tr style="border-bottom: 1px solid #f0f5f5;">
             <td style="padding: 10px 0; color: #536573; font-weight: 600;">Email:</td>
             <td style="padding: 10px 0; color: #102638;">

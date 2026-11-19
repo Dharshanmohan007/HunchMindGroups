@@ -6,54 +6,56 @@ import ScrollReveal from "../common/ScrollReveal";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-6 sm:py-8 md:py-10 bg-[#FAFAFA] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
+    <section id="about" className="py-8 sm:py-12 md:py-14 bg-[#FAFAFA] relative overflow-hidden">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           
-          {/* Left Column: Centered on mobile & tablet, left-aligned on desktop */}
-          <div className="lg:col-span-4 lg:pr-2 max-w-lg mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
-            <ScrollReveal direction="left" className="w-full flex flex-col items-center lg:items-start">
-              {/* Top Label: Dash + ABOUT HUNCHMIND INTELLIGENCE & GROUP (Centered on mobile/tab) */}
-              <div className="flex items-center justify-center lg:justify-start gap-2 mb-3.5">
-                <span className="w-5 h-[2px] bg-[#005B62] rounded-full inline-block" />
-                <span className="text-[11px] font-bold tracking-[0.25em] text-[#005B62] uppercase">
-                  About HunchMind Intelligence
+          {/* Left Column: Eyebrow, Heading, Description, Know More Button */}
+          <div className="lg:col-span-5 text-left">
+            <ScrollReveal direction="left">
+              {/* Eyebrow: — ABOUT HUNCHMIND GROUP */}
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-6 h-[2px] bg-[#075e5c] rounded-full inline-block" />
+                <span className="text-[10.5px] font-extrabold tracking-[0.2em] text-[#075e5c] uppercase">
+                  About HunchMind Group
                 </span>
               </div>
 
-              {/* Main Heading: Centered on mobile/tab */}
-              <h2 className="font-sans font-bold text-2xl sm:text-3xl md:text-[38px] lg:text-[40px] text-[#102638] leading-[1.12] tracking-tight mb-3.5 text-center lg:text-left">
-                Enterprise AI Solutions by<br />
-                <span className="text-[#005B62]">HunchMind Group.</span>
+              {/* Main Heading with italic teal accent */}
+              <h2 className="font-sans font-extrabold text-2xl sm:text-3xl md:text-[38px] text-[#122333] leading-[1.12] tracking-tight mb-3 sm:mb-4">
+                A Parent Company for<br />
+                <span className="italic font-serif font-normal text-[#087e78]">
+                  AI-Driven Businesses.
+                </span>
               </h2>
 
-              {/* Description Paragraph: Centered on mobile/tab */}
-              <p className="text-xs sm:text-sm md:text-[15px] text-[#536573] leading-relaxed mb-5 font-normal text-center lg:text-left max-w-md lg:max-w-none mx-auto lg:mx-0">
-                <strong>HunchMind Intelligence</strong> is the enterprise AI, data decision, and supply chain technology arm of <strong>HunchMind Group</strong>. We build and deploy mission-critical software architectures, predictive freight algorithms, and platforms like <strong>HMI Nexus</strong> to eliminate operational friction across commerce and agriculture.
+              {/* Description Paragraph */}
+              <p className="text-xs sm:text-[13.5px] text-[#46565d] leading-relaxed max-w-[460px] mb-6 font-normal">
+                We create, invest and scale technology businesses that deliver measurable and sustainable impact across industries.
               </p>
 
-              {/* Know More Button: Links to dedicated /about company page */}
+              {/* Action Button: Know More ↗ */}
               <a
                 href="/about"
-                className="group inline-flex items-center gap-2 bg-[#005B62] hover:bg-[#00474F] text-white text-[13.5px] font-semibold px-6 py-2.5 rounded-full shadow-[0_6px_18px_rgba(0,91,98,0.22)] hover:shadow-[0_10px_24px_rgba(0,91,98,0.30)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer w-fit mx-auto lg:mx-0"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#087b75] to-[#064d58] hover:from-[#076d68] hover:to-[#053f47] text-white text-[13px] font-semibold px-6 py-2.5 rounded-full shadow-[0_5px_15px_rgba(5,92,90,0.16)] hover:shadow-[0_8px_22px_rgba(5,92,90,0.25)] transition-all transform hover:-translate-y-0.5 cursor-pointer"
               >
-                <span>About HunchMind Intelligence</span>
-                <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#65DDE0]" />
+                <span>Know More</span>
+                <span className="text-sm font-bold">↗</span>
               </a>
             </ScrollReveal>
           </div>
 
-          {/* Right Column: Prominent Image centered on mobile & tablet, aligned right on desktop */}
-          <div className="lg:col-span-8 flex justify-center items-center mx-auto lg:justify-end w-full">
-            <ScrollReveal direction="right" delay={200} className="w-full max-w-[550px] sm:max-w-[640px] md:max-w-[720px] lg:max-w-[920px] xl:max-w-[960px] mx-auto lg:mx-0 flex justify-center">
-              <div className="relative w-full flex justify-center">
+          {/* Right Column: Angled Landscape Truck with Hologram Overlays */}
+          <div className="lg:col-span-7 flex justify-center lg:justify-end items-center">
+            <ScrollReveal direction="right" delay={200} className="w-full max-w-[720px]">
+              <div className="relative w-full drop-shadow-[0_12px_28px_rgba(0,0,0,0.08)]">
                 <Image
-                  src="/images/about-bgs.png"
-                  alt="Logistics truck travelling through agricultural landscape during sunset"
-                  width={1440}
-                  height={640}
+                  src="/images/about-bgsn.png"
+                  alt="HunchMind Group AI logistics truck travelling along agricultural highway with smart telemetry"
+                  width={960}
+                  height={480}
                   priority
-                  className="w-full h-auto object-contain mx-auto"
+                  className="w-full h-auto object-contain rounded-2xl"
                 />
               </div>
             </ScrollReveal>

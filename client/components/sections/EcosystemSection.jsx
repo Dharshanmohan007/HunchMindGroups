@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, Cpu, Repeat, Layers, FlaskConical, Sparkles, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import ScrollReveal from "../common/ScrollReveal";
 
 export default function EcosystemSection() {
@@ -9,63 +9,57 @@ export default function EcosystemSection() {
     {
       name: "HunchMind Intelligence",
       tagline: "AI & Data Solutions for Business Impact.",
-      image: "/images/intelligence-dashboard.jpg",
-      icon: Cpu,
-      iconColor: "text-amber-500",
-      iconBg: "bg-amber-50",
-      accentBorder: "group-hover:border-amber-400",
-      badge: "AI & Decisions",
+      image: "/assets/analytics-laptop.webp",
+      symbol: "M",
+      symbolColor: "text-[#ee8b21]",
       href: "/about",
+      alt: "AI and analytics dashboard on a laptop",
     },
     {
       name: "HMI Nexus",
       tagline: "Supply Chain Intelligence for Agri & Perishables.",
-      image: "/images/nexus-logistics.jpg",
-      icon: Repeat,
-      iconColor: "text-[#087D83]",
-      iconBg: "bg-[#DFF8F7]",
-      accentBorder: "group-hover:border-[#65DDE0]",
-      badge: "Logistics Hub",
+      image: "/assets/logistics-truck.webp",
+      symbol: "∞",
+      symbolColor: "text-[#21a34a]",
       href: "/products/hmi-nexus",
+      alt: "Logistics freight truck on highway",
     },
     {
       name: "HunchMind Ventures",
       tagline: "Incubating & Scaling Next-Gen Businesses.",
-      image: "/images/ventures-growth.jpg",
-      icon: Layers,
-      iconColor: "text-purple-600",
-      iconBg: "bg-purple-50",
-      accentBorder: "group-hover:border-purple-400",
-      badge: "Venture Builder",
-      href: "#contact",
+      image: "/assets/agriculture-crops.webp",
+      symbol: "▱",
+      symbolColor: "text-[#9c5cf5]",
+      href: "/about",
+      alt: "Agricultural green crops growing in morning sunlight",
     },
     {
       name: "HunchMind Labs",
       tagline: "Research & Innovation in AI and Applied Tech.",
-      image: "/images/labs-research.jpg",
-      icon: FlaskConical,
-      iconColor: "text-cyan-600",
-      iconBg: "bg-cyan-50",
-      accentBorder: "group-hover:border-cyan-400",
-      badge: "Applied R&D",
-      href: "#contact",
+      image: "/assets/research-laboratory.webp",
+      symbol: "⚗",
+      symbolColor: "text-[#1a9fd9]",
+      href: "/about",
+      alt: "Scientific research laboratory and innovation equipment",
     },
   ];
 
   return (
-    <section id="ecosystem" className="pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 bg-[#FAFAFA] relative">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+    <section id="ecosystem" className="pt-6 sm:pt-8 md:pt-10 pb-8 sm:pb-10 bg-[#FAFAFA] relative">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-14">
         
-        {/* Section Header (Compact spacing matching user markup) */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 gap-4">
+        {/* Section Heading: Eyebrow + Title + View All Products link */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-7 gap-3">
           <ScrollReveal direction="left">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#DFF8F7] text-[11px] font-bold tracking-[0.25em] text-[#005B62] mb-2 uppercase">
-                <Sparkles size={12} className="text-[#087D83]" />
-                <span>Our Ecosystem</span>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-6 h-[2px] bg-[#075e5c] rounded-full inline-block" />
+                <span className="text-[10.5px] font-extrabold tracking-[0.2em] text-[#075e5c] uppercase">
+                  Our Ecosystem
+                </span>
               </div>
-              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#102638] font-bold tracking-tight">
-                Our Businesses & Platforms
+              <h2 className="font-sans font-extrabold text-2xl sm:text-3xl md:text-[33px] text-[#122333] tracking-tight leading-tight">
+                Our Businesses &amp; Platforms
               </h2>
             </div>
           </ScrollReveal>
@@ -73,67 +67,60 @@ export default function EcosystemSection() {
           <ScrollReveal direction="right">
             <a
               href="/products/hmi-nexus"
-              className="group inline-flex items-center gap-1.5 text-[#005B62] hover:text-[#00474F] font-semibold text-xs sm:text-sm transition-colors pb-0.5 border-b border-transparent hover:border-[#005B62] cursor-pointer"
+              className="inline-flex items-center gap-1 text-[#087d78] hover:text-[#055a56] font-bold text-xs sm:text-[13.5px] transition-colors pb-1 cursor-pointer group"
             >
-              <span>Explore HMI Nexus</span>
-              <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
+              <span>View All Products</span>
+              <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
             </a>
           </ScrollReveal>
         </div>
 
-        {/* 4 Cards Grid (Reduced card size, minimized padding and compact image cut ratio) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
-          {businesses.map((biz, idx) => {
-            const Icon = biz.icon;
-            return (
-              <ScrollReveal key={idx} direction="up" delay={idx * 100} className="flex justify-center w-full">
-                <a
-                  href={biz.href}
-                  className={`bg-white rounded-[10px] sm:rounded-[10px] overflow-hidden border border-[#E2ECEB] shadow-[0_6px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_35px_rgba(0,91,98,0.10)] transition-all duration-400 hover:-translate-y-1.5 flex flex-col h-full w-full sm:max-w-[340px] md:max-w-[360px] lg:max-w-none mx-auto group ${biz.accentBorder} cursor-pointer`}
-                >
-                  {/* Minimized Image Container Ratio */}
-                  <div className="relative h-36 sm:h-40 w-full overflow-hidden bg-slate-100 shrink-0">
-                    <Image
-                      src={biz.image}
-                      alt={biz.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-50 group-hover:opacity-35 transition-opacity" />
-                    
-                    {/* Floating Badge */}
-                    <span className="absolute top-2.5 left-2.5 bg-white/92 backdrop-blur-md text-[10px] font-bold tracking-wide uppercase px-2.5 py-0.5 rounded-full text-[#102638] shadow-xs">
-                      {biz.badge}
-                    </span>
-                  </div>
+        {/* 4 Cards in 1 Row (Responsive: 1 col on mobile, 2 cols on tablet, 4 cols on desktop) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-5.5">
+          {businesses.map((biz, idx) => (
+            <ScrollReveal key={idx} direction="up" delay={idx * 100} className="h-full">
+              <a
+                href={biz.href}
+                className="bg-white border border-[#e0ebea] rounded-[19px] overflow-hidden shadow-[0_8px_22px_rgba(4,65,69,0.08)] hover:shadow-[0_16px_36px_rgba(4,65,69,0.14)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group cursor-pointer"
+              >
+                {/* Top Image Container */}
+                <div className="relative w-full h-32 sm:h-36 overflow-hidden bg-[#e9f8f5] shrink-0">
+                  <Image
+                    src={biz.image}
+                    alt={biz.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover group-hover:scale-106 transition-transform duration-500"
+                  />
+                </div>
 
-                  {/* Compact Card Body */}
-                  <div className="p-4 sm:p-4.5 flex flex-col justify-between flex-grow">
-                    {/* Identity Icon & Brand Name */}
-                    <div className="flex items-center gap-2.5 mb-2">
-                      <div className={`w-8 h-8 rounded-lg ${biz.iconBg} ${biz.iconColor} flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform`}>
-                        <Icon size={16} strokeWidth={2.2} />
-                      </div>
-                      <h3 className="font-sans font-bold text-[16px] sm:text-[17px] text-[#102638] group-hover:text-[#005B62] transition-colors leading-tight">
+                {/* Content Body with gradient & symbol */}
+                <div className="p-4 sm:p-4.5 bg-gradient-to-b from-white to-[#f3faf9] flex-grow flex flex-col justify-between relative min-h-[130px]">
+                  <div>
+                    {/* Brand Symbol & Title */}
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className={`text-[23px] font-extrabold leading-none ${biz.symbolColor}`}>
+                        {biz.symbol}
+                      </span>
+                      <h3 className="font-sans font-extrabold text-[14.5px] sm:text-[15px] text-[#122333] leading-tight group-hover:text-[#087d78] transition-colors">
                         {biz.name}
                       </h3>
                     </div>
 
-                    {/* Description and Arrow Button in a SINGLE LINE */}
-                    <div className="flex items-center justify-between gap-3 pt-2 mt-auto border-t border-[#F0F5F5]">
-                      <p className="text-xs sm:text-[13px] text-[#536573] leading-snug font-normal line-clamp-2 flex-grow">
-                        {biz.tagline}
-                      </p>
-                      <div className="w-8 h-8 rounded-full bg-[#F7FAFA] group-hover:bg-[#005B62] text-[#005B62] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300 shadow-xs group-hover:rotate-45">
-                        <ArrowUpRight size={15} strokeWidth={2.2} />
-                      </div>
-                    </div>
+                    {/* Tagline Description */}
+                    <p className="text-[11px] sm:text-[11.5px] text-[#53636a] leading-relaxed pr-8 font-normal">
+                      {biz.tagline}
+                    </p>
                   </div>
-                </a>
-              </ScrollReveal>
-            );
-          })}
+
+                  {/* Circular Arrow Button (Bottom Right) */}
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#bde7e4] bg-white group-hover:bg-[#087d78] text-[#087d78] group-hover:text-white flex items-center justify-center text-sm font-bold transition-all duration-200 self-end mt-2 shadow-xs group-hover:translate-x-0.5">
+                    →
+                  </div>
+                </div>
+              </a>
+            </ScrollReveal>
+          ))}
         </div>
 
       </div>

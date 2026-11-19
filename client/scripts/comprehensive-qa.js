@@ -62,7 +62,7 @@ async function runQA() {
   console.log("=== HUNCHMIND GROUP FINAL SEO & QUALITY ASSURANCE ===");
   console.log(`Starting local production server on port ${PORT}...`);
 
-  const server = spawn("npx", ["next", "start", "-p", String(PORT)], {
+  const server = spawn("npx", ["next", "start", "-H", "127.0.0.1", "-p", String(PORT)], {
     cwd: path.resolve(__dirname, ".."),
     shell: true,
     stdio: ["ignore", "pipe", "pipe"],

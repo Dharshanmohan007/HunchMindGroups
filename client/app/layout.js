@@ -79,7 +79,17 @@ export const metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   category: "technology",
 };
@@ -92,7 +102,7 @@ const organizationSchema = {
   name: "HunchMind Intelligence",
   alternateName: "HunchMind",
   url: "https://www.hunchmindintelligence.com",
-  logo: "https://www.hunchmindintelligence.com/images/hero-bg.png",
+  logo: "https://www.hunchmindintelligence.com/icon.png",
   description:
     "HunchMind Intelligence is an enterprise AI, data decision, and supply chain technology company delivering predictive logistics, cold-chain telemetry, and commercial optimization.",
   email: "hunchmind.contact@gmail.com",
@@ -167,6 +177,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon-48x48.png" type="image/png" sizes="48x48" />
+        <link rel="icon" href="/icon-96x96.png" type="image/png" sizes="96x96" />
+        <link rel="icon" href="/icon-192x192.png" type="image/png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

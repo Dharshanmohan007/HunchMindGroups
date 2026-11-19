@@ -1,6 +1,5 @@
 import Header from "../components/layout/Header";
 import HeroSection from "../components/sections/HeroSection";
-import TrustedBusinesses from "../components/sections/TrustedBusinesses";
 import EcosystemSection from "../components/sections/EcosystemSection";
 import FocusAreas from "../components/sections/FocusAreas";
 import ImpactSection from "../components/sections/ImpactSection";
@@ -15,7 +14,6 @@ export default function Home() {
       <Header />
       <main className="flex-grow bg-[#FAFAFA]">
         <HeroSection />
-        <TrustedBusinesses />
         <EcosystemSection />
         <FocusAreas />
         <ImpactSection />

@@ -1,59 +1,23 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import {
-  Mail,
-  Phone,
-  User,
-  MessageSquare,
-  Building2,
-  Briefcase,
-  Handshake,
-  HelpCircle,
-  ChevronDown,
-  Check,
-  Send,
-  Sparkles,
-  CheckCircle2,
-  AlertCircle,
-  Clock,
-  MapPin,
-  ArrowRight,
-} from "lucide-react";
+import { Mail, Phone, MapPin, CheckCircle2, AlertCircle, Loader2, ChevronDown, Check } from "lucide-react";
 import ScrollReveal from "../common/ScrollReveal";
 
-const INQUIRY_OPTIONS = [
-  {
-    id: "company",
-    label: "Company / Enterprise Solutions",
-    desc: "AI engines, supply chain intelligence & platform integration",
-    icon: Building2,
-  },
-  {
-    id: "career",
-    label: "Career / Join Our Team",
-    desc: "Engineering, product management, research & operations",
-    icon: Briefcase,
-  },
-  {
-    id: "partnership",
-    label: "Partnership & Ecosystem",
-    desc: "Retail hypermarket, mandi networks & fleet collaboration",
-    icon: Handshake,
-  },
-  {
-    id: "general",
-    label: "General Inquiry",
-    desc: "Press, analyst briefings & other conversations",
-    icon: HelpCircle,
-  },
+const INQUIRY_TYPES = [
+  "AI Products & Solutions",
+  "Supply Chain & Logistics",
+  "Data & Predictive Analytics",
+  "Venture & Investment",
+  "Research & Innovation",
+  "General Inquiry",
 ];
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
-    phone: "",
     email: "",
+    company: "",
     purpose: "",
     message: "",
   });
@@ -65,10 +29,10 @@ export default function ContactSection() {
   const [submitError, setSubmitError] = useState("");
   const dropdownRef = useRef(null);
 
-  // Close custom dropdown when clicking outside
+  // Close dropdown on outside click
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    function handleClickOutside(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setDropdownOpen(false);
       }
     }
@@ -76,35 +40,24 @@ export default function ContactSection() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Validation function
-  const validateForm = () => {
-    const newErrors = {};
-
+  const validate = () => {
+    const errs = {};
     if (!formData.name.trim() || formData.name.trim().length < 2) {
-      newErrors.name = "Please enter your full name (minimum 2 characters).";
+      errs.name = "Please enter your full name.";
     }
-
-    const cleanPhone = formData.phone.replace(/[\s\(\)\-\.]/g, "");
-    if (!cleanPhone || cleanPhone.length < 10 || !/^\+?[0-9]{10,15}$/.test(cleanPhone)) {
-      newErrors.phone = "Please enter a valid phone number (at least 10 digits).";
-    }
-
-    if (!formData.email || !formData.email.trim()) {
-      newErrors.email = "Please enter your email address.";
+    if (!formData.email.trim()) {
+      errs.email = "Please enter your email address.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      newErrors.email = "Please enter a valid email address.";
+      errs.email = "Please enter a valid email address.";
     }
-
     if (!formData.purpose) {
-      newErrors.purpose = "Please select an inquiry category (Company or Career).";
+      errs.purpose = "Please select an inquiry type.";
     }
-
-    if (!formData.message.trim() || formData.message.trim().length < 10) {
-      newErrors.message = "Please write a message of at least 10 characters.";
+    if (!formData.message.trim() || formData.message.trim().length < 5) {
+      errs.message = "Please enter a message (at least 5 characters).";
     }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
   };
 
   const handleChange = (field, value) => {
@@ -114,21 +67,14 @@ export default function ContactSection() {
     }
   };
 
-  const handleSelectPurpose = (option) => {
-    handleChange("purpose", option.label);
-    setDropdownOpen(false);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitError("");
+    setSubmitSuccess(false);
 
-    if (!validateForm()) {
-      return;
-    }
+    if (!validate()) return;
 
     setIsSubmitting(true);
-
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -137,386 +83,342 @@ export default function ContactSection() {
       });
 
       const data = await res.json();
-
       if (res.ok && data.success) {
         setSubmitSuccess(true);
         setFormData({
           name: "",
-          phone: "",
           email: "",
+          company: "",
           purpose: "",
           message: "",
         });
       } else {
         setSubmitError(
-          data.message || "Failed to submit inquiry. Please try again or email us directly."
+          data.message || "Failed to dispatch inquiry. Please verify your connection or email us directly."
         );
       }
     } catch (err) {
-      console.error("Form submit error:", err);
-      setSubmitError(
-        "Network connection issue. Please check your internet or email us directly."
-      );
+      console.error("Form error:", err);
+      setSubmitError("Network connection issue. Please check your internet or email us directly.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const selectedOption = INQUIRY_OPTIONS.find((opt) => opt.label === formData.purpose);
-  const SelectedIcon = selectedOption ? selectedOption.icon : Building2;
-
   return (
-    <section id="contact" className="py-12 sm:py-16 md:py-20 bg-[#FAFAFA] relative border-t border-[#E2ECEB]/60">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          
-          {/* Left Column: Heading, Context & Direct Contact Highlights */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
-            <ScrollReveal direction="left">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#DFF8F7] text-[11px] font-bold tracking-[0.25em] text-[#005B62] mb-3 uppercase w-fit">
-                <Sparkles size={12} className="text-[#087D83]" />
-                <span>Contact Us</span>
-              </div>
+    <section id="contact" className="py-6 sm:py-8 md:py-10 bg-[#FAFAFA] relative">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-14">
 
-              {/* Main Heading */}
-              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-[#102638] font-bold tracking-tight leading-[1.15] mb-4">
-                Let&apos;s Build the Future of{" "}
-                <span className="text-[#005B62]">Intelligent Commerce.</span>
-              </h2>
+        {/* Mint / Aqua Rounded Background Container with Organic Flowing Wave Ribbons */}
+        <div
+          className="rounded-[28px] sm:rounded-[36px] border border-[#d8ebe7] p-6 sm:p-10 lg:p-12 shadow-[0_8px_30px_rgba(4,65,69,0.05)] relative overflow-hidden"
+          style={{
+            background: "linear-gradient(135deg, #eef9f7 0%, #f7fcfa 50%, #e2f5f1 100%)",
+          }}
+        >
+          {/* Flowing Organic Mint & Aqua Wave Ribbons in Background matching Image 2 */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+            <svg
+              viewBox="0 0 1200 480"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="absolute inset-0 w-full h-full object-cover"
+              preserveAspectRatio="none"
+            >
+              <defs>
+                {/* Gradient 1: Flowing Soft Mint / Aqua Ribbon */}
+                <linearGradient id="mintFlow1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#8de4d7" stopOpacity="0.75" />
+                  <stop offset="50%" stopColor="#bdf1e8" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#96e7dc" stopOpacity="0.75" />
+                </linearGradient>
+                {/* Gradient 2: Bright Aqua accent Ribbon */}
+                <linearGradient id="mintFlow2" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#7ae0d1" stopOpacity="0.7" />
+                  <stop offset="60%" stopColor="#c5f4ec" stopOpacity="0.45" />
+                  <stop offset="100%" stopColor="#6fd8c9" stopOpacity="0.65" />
+                </linearGradient>
+                {/* Gradient 3: Soft Top-Right accent */}
+                <linearGradient id="mintFlow3" x1="50%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#b4f0e7" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="#e3f9f5" stopOpacity="0.05" />
+                </linearGradient>
+              </defs>
 
-              {/* Subtitle */}
-              <p className="text-xs sm:text-sm md:text-[15px] text-[#536573] leading-relaxed mb-8 font-normal">
-                Whether you are exploring enterprise AI integration for your supply chain, seeking an ecosystem partnership, or eager to join our fast-growing teams, we look forward to connecting with you.
-              </p>
-
-              {/* Key Contact Channels Box */}
-              <div className="space-y-3.5 bg-white rounded-2xl p-5 sm:p-6 border border-[#E2ECEB] shadow-[0_4px_20px_rgba(0,35,45,0.04)]">
-                {/* Email Box */}
-                <a
-                  href="mailto:hunchmindintelligence@gmail.com"
-                  className="group flex items-start gap-3.5 p-3 rounded-xl hover:bg-[#F7FAFA] transition-colors"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[#DFF8F7] text-[#005B62] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                    <Mail size={18} strokeWidth={2.2} />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[11px] font-bold text-[#536573] uppercase tracking-wider">
-                      Direct Email Inquiry
-                    </span>
-                    <span className="text-sm font-semibold text-[#102638] group-hover:text-[#005B62] transition-colors break-all">
-                      hunchmind.contact@gmail.com
-                    </span>
-                  </div>
-                </a>
-
-                {/* Response Speed */}
-                <div className="flex items-center gap-3.5 px-3 py-2 text-xs text-[#536573]">
-                  <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
-                    <Clock size={18} strokeWidth={2.2} />
-                  </div>
-                  <div>
-                    <span className="font-semibold text-[#102638] block">
-                      Fast Turnaround Time
-                    </span>
-                    <span className="text-[11px] text-[#536573]">
-                      Our team typically responds within 24 business hours.
-                    </span>
-                  </div>
-                </div>
-
-                {/* Operations & Presence */}
-                <div className="flex items-center gap-3.5 px-3 py-2 text-xs text-[#536573]">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                    <MapPin size={18} strokeWidth={2.2} />
-                  </div>
-                  <div>
-                    <span className="font-semibold text-[#102638] block">
-                      Pan-India Operations
-                    </span>
-                    <span className="text-[11px] text-[#536573]">
-                      Active across key agricultural, logistics & retail corridors.
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
+              {/* Main Organic Ribbon: Sweeps up from bottom-left across center and under card */}
+              <path
+                d="M 0,260 C 140,210 260,340 440,290 C 580,250 680,180 840,240 C 980,290 1080,220 1200,260 L 1200,480 L 0,480 Z"
+                fill="url(#mintFlow1)"
+              />
+              {/* Secondary Sweeping Ribbon */}
+              <path
+                d="M 0,350 C 180,290 320,410 520,330 C 700,260 840,360 1040,300 C 1120,280 1170,310 1200,320 L 1200,480 L 0,480 Z"
+                fill="url(#mintFlow2)"
+              />
+              {/* Top-Right Soft Wave Accent */}
+              <path
+                d="M 700,0 C 850,70 1020,40 1200,100 L 1200,0 Z"
+                fill="url(#mintFlow3)"
+              />
+            </svg>
           </div>
 
-          {/* Right Column: Clean, Polished Contact Form Card */}
-          <div className="lg:col-span-7 w-full">
-            <ScrollReveal direction="right" delay={150}>
-              <div className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 border border-[#E2ECEB] shadow-[0_16px_45px_rgba(0,35,45,0.06)] relative overflow-hidden">
-                
-                {submitSuccess ? (
-                  <div className="py-10 sm:py-12 text-center flex flex-col items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-[#DFF8F7] text-[#005B62] flex items-center justify-center mb-5 animate-pulse-subtle shadow-xs">
-                      <CheckCircle2 size={36} strokeWidth={2.5} />
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+            {/* Left Column: Heading, Subtitle & Direct Contact Details */}
+            <div className="lg:col-span-5 text-left">
+              <ScrollReveal direction="left">
+                {/* Eyebrow: — GET IN TOUCH */}
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-6 h-[2px] bg-[#075e5c] rounded-full inline-block" />
+                  <span className="text-[10.5px] font-extrabold tracking-[0.2em] text-[#075e5c] uppercase">
+                    Get In Touch
+                  </span>
+                </div>
+
+                {/* Main Heading with italic teal emphasis */}
+                <h2 className="font-sans font-extrabold text-2xl sm:text-3xl md:text-[38px] text-[#122333] leading-[1.1] tracking-tight mb-3">
+                  Let&apos;s Build the Next<br />
+                  <span className="italic font-serif font-normal text-[#087e78]">
+                    AI Solution
+                  </span> Together.
+                </h2>
+
+                {/* Subtitle */}
+                <p className="text-xs sm:text-[13px] text-[#465b5b] leading-relaxed mb-6 sm:mb-8 max-w-[420px] font-normal">
+                  Have a project, partnership or investment opportunity? We&apos;d love to hear from you.
+                </p>
+
+                {/* Horizontal Contact Information Row matching Image 2 & Image 5 */}
+                <div className="flex flex-wrap items-center gap-5 sm:gap-7 pt-1">
+                  {/* Email */}
+                  <div className="flex items-center gap-2.5">
+                    <Mail className="w-4 h-4 text-[#005B62] shrink-0" />
+                    <div className="leading-tight">
+                      <div className="text-[11px] font-bold text-[#122333]">Email</div>
+                      <a href="mailto:hunchmind.contact@gmail.com" className="text-xs text-[#465b5b] hover:text-[#005B62] font-medium transition-colors">
+                        hunchmind.contact@gmail.com
+                      </a>
                     </div>
-                    <h3 className="font-serif text-2xl sm:text-3xl text-[#102638] font-bold mb-2">
-                      Message Sent Successfully!
-                    </h3>
-                    <p className="text-xs sm:text-sm text-[#536573] max-w-md mx-auto mb-6 leading-relaxed">
-                      Thank you for contacting HunchMind Group. Your details have been sent to{" "}
-                      <span className="font-semibold text-[#005B62]">
-                        hunchmindintelligence@gmail.com
-                      </span>
-                      . Our team will review your message and reply promptly.
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => setSubmitSuccess(false)}
-                      className="inline-flex items-center gap-2 bg-[#005B62] hover:bg-[#00474F] text-white text-xs sm:text-sm font-semibold px-6 py-2.5 rounded-full shadow-md transition-all cursor-pointer"
-                    >
-                      <span>Send Another Inquiry</span>
-                      <ArrowRight size={14} />
-                    </button>
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} noValidate className="space-y-5">
-                    
-                    <div className="mb-2">
-                      <h3 className="font-serif text-xl sm:text-2xl text-[#102638] font-bold tracking-tight">
-                        Send Us an Inquiry
-                      </h3>
-                      <p className="text-xs sm:text-[13px] text-[#536573] mt-1">
-                        Fill in your details below and our leadership team will connect with you.
-                      </p>
+
+                  {/* Phone */}
+                  <div className="flex items-center gap-2.5">
+                    <Phone className="w-4 h-4 text-[#005B62] shrink-0" />
+                    <div className="leading-tight">
+                      <div className="text-[11px] font-bold text-[#122333]">Phone</div>
+                      <a href="tel:+919876543210" className="text-xs text-[#465b5b] hover:text-[#005B62] font-medium transition-colors">
+                        +91 98765 43210
+                      </a>
                     </div>
+                  </div>
 
-                    {submitError && (
-                      <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2.5">
-                        <AlertCircle size={16} className="shrink-0 text-red-500" />
-                        <span>{submitError}</span>
+                  {/* Location */}
+                  <div className="flex items-center gap-2.5">
+                    <MapPin className="w-4 h-4 text-[#005B62] shrink-0" />
+                    <div className="leading-tight">
+                      <div className="text-[11px] font-bold text-[#122333]">Location</div>
+                      <div className="text-xs text-[#465b5b] font-medium">
+                        Bengaluru, India
                       </div>
-                    )}
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
 
-                    {/* Name & Phone in 2 Columns on Tablet/Desktop */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-                      
-                      {/* Full Name */}
+            {/* Right Column: White Form Card */}
+            <div className="lg:col-span-7">
+              <ScrollReveal direction="right" delay={200}>
+                <div className="bg-white rounded-[24px] border border-[#dfebe9] p-5 sm:p-7 shadow-[0_10px_28px_rgba(4,65,69,0.08)]">
+
+                  {/* Success Alert */}
+                  {submitSuccess && (
+                    <div className="mb-5 p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2.5">
+                      <CheckCircle2 size={18} className="text-emerald-600 shrink-0" />
                       <div>
-                        <label className="block text-xs font-semibold text-[#102638] mb-1.5">
-                          Full Name <span className="text-red-500">*</span>
+                        <strong>Message Sent Successfully!</strong> Thank you for reaching out. Our leadership team will connect with you shortly.
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Error Alert */}
+                  {submitError && (
+                    <div className="mb-5 p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-800 text-xs flex items-start gap-2.5">
+                      <AlertCircle size={18} className="text-red-600 shrink-0 mt-0.5" />
+                      <div className="leading-snug">{submitError}</div>
+                    </div>
+                  )}
+
+                  <form onSubmit={handleSubmit} noValidate>
+                    {/* Row 1: Full Name * & Email Address * */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 mb-3.5">
+                      <div>
+                        <label className="block text-[11px] font-bold text-[#122333] mb-1.5">
+                          Full Name <span className="text-[#bf3939]">*</span>
                         </label>
-                        <div className="relative flex items-center">
-                          <div className="absolute left-3.5 text-[#536573] pointer-events-none">
-                            <User size={16} />
-                          </div>
-                          <input
-                            type="text"
-                            value={formData.name}
-                            onChange={(e) => handleChange("name", e.target.value)}
-                            placeholder="John Doe"
-                            className={`w-full bg-[#F7FAFA] border ${
-                              errors.name ? "border-red-400 focus:border-red-500" : "border-[#E2ECEB] focus:border-[#005B62]"
-                            } rounded-xl py-2.5 pl-10 pr-3 text-xs sm:text-[13px] text-[#102638] placeholder-[#536573]/60 focus:bg-white focus:outline-none transition-all shadow-2xs`}
-                          />
-                        </div>
+                        <input
+                          type="text"
+                          value={formData.name}
+                          onChange={(e) => handleChange("name", e.target.value)}
+                          placeholder="Enter your full name"
+                          required
+                          className={`w-full border rounded-xl px-3.5 py-2.5 text-xs text-[#122333] placeholder-[#8a9b99] bg-white outline-none transition-all ${errors.name
+                            ? "border-red-400 bg-red-50/20"
+                            : "border-[#d8e5e3] focus:border-[#087d78] focus:ring-2 focus:ring-[#087d78]/15"
+                            }`}
+                        />
                         {errors.name && (
-                          <p className="text-[11px] text-red-500 mt-1 pl-1 flex items-center gap-1">
-                            <span>{errors.name}</span>
-                          </p>
+                          <p className="text-[10px] text-red-600 mt-1">{errors.name}</p>
                         )}
                       </div>
 
-                      {/* Phone Number */}
                       <div>
-                        <label className="block text-xs font-semibold text-[#102638] mb-1.5">
-                          Phone Number <span className="text-red-500">*</span>
+                        <label className="block text-[11px] font-bold text-[#122333] mb-1.5">
+                          Email Address <span className="text-[#bf3939]">*</span>
                         </label>
-                        <div className="relative flex items-center">
-                          <div className="absolute left-3.5 text-[#536573] pointer-events-none">
-                            <Phone size={16} />
-                          </div>
-                          <input
-                            type="tel"
-                            value={formData.phone}
-                            onChange={(e) => handleChange("phone", e.target.value)}
-                            placeholder="+91 98765 43210"
-                            className={`w-full bg-[#F7FAFA] border ${
-                              errors.phone ? "border-red-400 focus:border-red-500" : "border-[#E2ECEB] focus:border-[#005B62]"
-                            } rounded-xl py-2.5 pl-10 pr-3 text-xs sm:text-[13px] text-[#102638] placeholder-[#536573]/60 focus:bg-white focus:outline-none transition-all shadow-2xs`}
-                          />
-                        </div>
-                        {errors.phone && (
-                          <p className="text-[11px] text-red-500 mt-1 pl-1 flex items-center gap-1">
-                            <span>{errors.phone}</span>
-                          </p>
-                        )}
-                      </div>
-
-                    </div>
-
-                    {/* Email Field */}
-                    <div>
-                      <label className="block text-xs font-semibold text-[#102638] mb-1.5">
-                        Email Address <span className="text-red-500">*</span>
-                      </label>
-                      <div className="relative flex items-center">
-                        <div className="absolute left-3.5 text-[#536573] pointer-events-none">
-                          <Mail size={16} />
-                        </div>
                         <input
                           type="email"
-                          required
                           value={formData.email}
                           onChange={(e) => handleChange("email", e.target.value)}
-                          placeholder="you@company.com"
-                          className={`w-full bg-[#F7FAFA] border ${
-                            errors.email ? "border-red-400 focus:border-red-500" : "border-[#E2ECEB] focus:border-[#005B62]"
-                          } rounded-xl py-2.5 pl-10 pr-3 text-xs sm:text-[13px] text-[#102638] placeholder-[#536573]/60 focus:bg-white focus:outline-none transition-all shadow-2xs`}
+                          placeholder="Enter your email address"
+                          required
+                          className={`w-full border rounded-xl px-3.5 py-2.5 text-xs text-[#122333] placeholder-[#8a9b99] bg-white outline-none transition-all ${errors.email
+                            ? "border-red-400 bg-red-50/20"
+                            : "border-[#d8e5e3] focus:border-[#087d78] focus:ring-2 focus:ring-[#087d78]/15"
+                            }`}
                         />
+                        {errors.email && (
+                          <p className="text-[10px] text-red-600 mt-1">{errors.email}</p>
+                        )}
                       </div>
-                      {errors.email && (
-                        <p className="text-[11px] text-red-500 mt-1 pl-1 flex items-center gap-1">
-                          <span>{errors.email}</span>
-                        </p>
-                      )}
                     </div>
 
-                    {/* CUSTOM DROPDOWN: Company or Career */}
-                    <div ref={dropdownRef} className="relative">
-                      <label className="block text-xs font-semibold text-[#102638] mb-1.5">
-                        Inquiry Category <span className="text-red-500">*</span>
-                      </label>
-
-                      {/* Dropdown Trigger Button */}
-                      <button
-                        type="button"
-                        onClick={() => setDropdownOpen(!dropdownOpen)}
-                        className={`w-full bg-[#F7FAFA] border ${
-                          errors.purpose ? "border-red-400" : dropdownOpen ? "border-[#005B62] bg-white ring-2 ring-[#005B62]/10" : "border-[#E2ECEB]"
-                        } rounded-xl py-2.5 px-3.5 text-left flex items-center justify-between transition-all cursor-pointer shadow-2xs`}
-                        aria-haspopup="listbox"
-                        aria-expanded={dropdownOpen}
-                      >
-                        <div className="flex items-center gap-2.5 overflow-hidden">
-                          <div className="w-6 h-6 rounded-lg bg-[#DFF8F7] text-[#005B62] flex items-center justify-center shrink-0">
-                            <SelectedIcon size={14} />
-                          </div>
-                          <span className={`text-xs sm:text-[13px] truncate ${formData.purpose ? "text-[#102638] font-medium" : "text-[#536573]/60 font-normal"}`}>
-                            {formData.purpose || "Select Company or Career inquiry"}
-                          </span>
-                        </div>
-                        <ChevronDown
-                          size={16}
-                          className={`text-[#536573] shrink-0 transition-transform duration-300 ${dropdownOpen ? "rotate-180 text-[#005B62]" : ""}`}
-                        />
-                      </button>
-
-                      {/* Dropdown Menu Popup */}
-                      {dropdownOpen && (
-                        <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl border border-[#E2ECEB] shadow-[0_12px_30px_rgba(0,35,45,0.12)] z-30 p-2 space-y-1 animate-in fade-in zoom-in-95 duration-150">
-                          {INQUIRY_OPTIONS.map((option) => {
-                            const IconComponent = option.icon;
-                            const isSelected = formData.purpose === option.label;
-                            return (
-                              <button
-                                key={option.id}
-                                type="button"
-                                onClick={() => handleSelectPurpose(option)}
-                                className={`w-full p-2.5 rounded-xl text-left flex items-start gap-3 transition-colors cursor-pointer ${
-                                  isSelected
-                                    ? "bg-[#DFF8F7]/60 text-[#005B62]"
-                                    : "hover:bg-[#F7FAFA] text-[#102638]"
-                                }`}
-                              >
-                                <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${
-                                  isSelected ? "bg-[#005B62] text-white" : "bg-[#F0F5F5] text-[#536573]"
-                                }`}>
-                                  <IconComponent size={16} />
-                                </div>
-                                <div className="flex-grow">
-                                  <div className="text-xs sm:text-[13px] font-semibold leading-tight">
-                                    {option.label}
-                                  </div>
-                                  <div className="text-[11px] text-[#536573] mt-0.5 leading-snug">
-                                    {option.desc}
-                                  </div>
-                                </div>
-                                {isSelected && (
-                                  <Check size={16} className="text-[#005B62] shrink-0 mt-1" />
-                                )}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      )}
-
-                      {errors.purpose && (
-                        <p className="text-[11px] text-red-500 mt-1 pl-1 flex items-center gap-1">
-                          <span>{errors.purpose}</span>
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Message Textarea */}
-                    <div>
-                      <div className="flex items-center justify-between mb-1.5">
-                        <label className="text-xs font-semibold text-[#102638]">
-                          Message <span className="text-red-500">*</span>
+                    {/* Row 2: Company / Organization & Inquiry Type * (Custom Styled Dropdown) */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 mb-3.5">
+                      <div>
+                        <label className="block text-[11px] font-bold text-[#122333] mb-1.5">
+                          Company / Organization
                         </label>
-                        <span className="text-[11px] text-[#536573]/70">
-                          {formData.message.length} characters
-                        </span>
-                      </div>
-                      <div className="relative">
-                        <textarea
-                          rows={4}
-                          value={formData.message}
-                          onChange={(e) => handleChange("message", e.target.value)}
-                          placeholder="Tell us about your requirements, company profile, or role of interest..."
-                          className={`w-full bg-[#F7FAFA] border ${
-                            errors.message ? "border-red-400 focus:border-red-500" : "border-[#E2ECEB] focus:border-[#005B62]"
-                          } rounded-xl p-3.5 text-xs sm:text-[13px] text-[#102638] placeholder-[#536573]/60 focus:bg-white focus:outline-none transition-all shadow-2xs resize-none`}
+                        <input
+                          type="text"
+                          value={formData.company}
+                          onChange={(e) => handleChange("company", e.target.value)}
+                          placeholder="Enter your company or organization"
+                          className="w-full border border-[#d8e5e3] focus:border-[#087d78] focus:ring-2 focus:ring-[#087d78]/15 rounded-xl px-3.5 py-2.5 text-xs text-[#122333] placeholder-[#8a9b99] bg-white outline-none transition-all"
                         />
                       </div>
+
+                      <div className="relative" ref={dropdownRef}>
+                        <label className="block text-[11px] font-bold text-[#122333] mb-1.5">
+                          Inquiry Type <span className="text-[#bf3939]">*</span>
+                        </label>
+
+                        {/* Custom Dropdown Toggle Button */}
+                        <button
+                          type="button"
+                          onClick={() => setDropdownOpen(!dropdownOpen)}
+                          className={`w-full border rounded-xl px-3.5 py-2.5 text-xs text-left flex items-center justify-between transition-all bg-white cursor-pointer ${errors.purpose
+                            ? "border-red-400 bg-red-50/20"
+                            : dropdownOpen
+                              ? "border-[#087d78] ring-2 ring-[#087d78]/15"
+                              : "border-[#d8e5e3] hover:border-[#087d78]"
+                            }`}
+                        >
+                          <span className={formData.purpose ? "text-[#122333] font-semibold" : "text-[#8a9b99]"}>
+                            {formData.purpose || "Select an inquiry type"}
+                          </span>
+                          <ChevronDown
+                            size={15}
+                            className={`text-[#53636a] transition-transform duration-200 ${dropdownOpen ? "rotate-180 text-[#087d78]" : ""
+                              }`}
+                          />
+                        </button>
+
+                        {/* Custom Styled Dropdown Popup Menu */}
+                        {dropdownOpen && (
+                          <div className="absolute top-full left-0 right-0 mt-1.5 bg-white border border-[#dfebe9] rounded-xl shadow-[0_12px_32px_rgba(4,65,69,0.14)] p-1.5 z-50 animate-in fade-in duration-150">
+                            {INQUIRY_TYPES.map((type, idx) => {
+                              const isSelected = formData.purpose === type;
+                              return (
+                                <button
+                                  key={idx}
+                                  type="button"
+                                  onClick={() => {
+                                    handleChange("purpose", type);
+                                    setDropdownOpen(false);
+                                  }}
+                                  className={`w-full text-left px-3 py-2 rounded-lg text-xs font-medium flex items-center justify-between transition-colors cursor-pointer ${isSelected
+                                    ? "bg-[#e9f8f5] text-[#087d78] font-bold"
+                                    : "text-[#122333] hover:bg-[#f3faf9] hover:text-[#087d78]"
+                                    }`}
+                                >
+                                  <span>{type}</span>
+                                  {isSelected && <Check size={14} className="text-[#087d78]" />}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        )}
+
+                        {errors.purpose && (
+                          <p className="text-[10px] text-red-600 mt-1">{errors.purpose}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Row 3: Message * */}
+                    <div className="mb-4">
+                      <label className="block text-[11px] font-bold text-[#122333] mb-1.5">
+                        Message <span className="text-[#bf3939]">*</span>
+                      </label>
+                      <textarea
+                        value={formData.message}
+                        onChange={(e) => handleChange("message", e.target.value)}
+                        placeholder="Tell us about your project, requirement or collaboration..."
+                        rows={3}
+                        required
+                        className={`w-full border rounded-xl p-3.5 text-xs text-[#122333] placeholder-[#8a9b99] bg-white outline-none transition-all resize-y ${errors.message
+                          ? "border-red-400 bg-red-50/20"
+                          : "border-[#d8e5e3] focus:border-[#087d78] focus:ring-2 focus:ring-[#087d78]/15"
+                          }`}
+                      />
                       {errors.message && (
-                        <p className="text-[11px] text-red-500 mt-1 pl-1 flex items-center gap-1">
-                          <span>{errors.message}</span>
-                        </p>
+                        <p className="text-[10px] text-red-600 mt-1">{errors.message}</p>
                       )}
                     </div>
 
-                    {/* Submit Button */}
-                    <div className="pt-2">
+                    {/* Bottom Row: Submit Button (Aligned Right with Paper Airplane Icon) */}
+                    <div className="flex justify-end pt-1">
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className={`w-full inline-flex items-center justify-center gap-2.5 bg-[#005B62] hover:bg-[#00474F] text-white text-xs sm:text-sm font-semibold py-3 sm:py-3.5 px-6 rounded-full shadow-[0_6px_20px_rgba(0,91,98,0.22)] hover:shadow-[0_10px_25px_rgba(0,91,98,0.32)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed`}
+                        className="inline-flex items-center justify-center gap-2 bg-[#005B62] hover:bg-[#00474F] disabled:opacity-70 text-white text-[13px] font-semibold px-6 py-2.5 rounded-full shadow-[0_5px_15px_rgba(0,91,98,0.20)] hover:shadow-[0_8px_22px_rgba(0,91,98,0.30)] transition-all transform hover:-translate-y-0.5 cursor-pointer"
                       >
                         {isSubmitting ? (
                           <>
-                            <div className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
-                            <span>Sending to hunchmindintelligence@gmail.com...</span>
+                            <Loader2 size={15} className="animate-spin" />
+                            <span>Sending...</span>
                           </>
                         ) : (
                           <>
-                            <span>Submit Message</span>
-                            <Send size={15} className="text-[#65DDE0] transform -rotate-12 translate-x-0.5" />
+                            <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 transform -rotate-12">
+                              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                            </svg>
+                            <span>Send Message</span>
                           </>
                         )}
                       </button>
                     </div>
-
-                    {/* Subtle privacy & destination footnote */}
-                    <p className="text-[11px] text-center text-[#536573]/80 pt-1">
-                      Inquiries are delivered to{" "}
-                      <span className="font-semibold text-[#102638]">
-                        hunchmindintelligence@gmail.com
-                      </span>
-                      . Your information is kept strictly confidential.
-                    </p>
-
                   </form>
-                )}
 
-              </div>
-            </ScrollReveal>
+                </div>
+              </ScrollReveal>
+            </div>
+
           </div>
-
         </div>
+
       </div>
     </section>
   );
