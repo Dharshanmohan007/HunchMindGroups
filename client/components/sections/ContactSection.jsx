@@ -89,7 +89,9 @@ export default function ContactSection() {
       newErrors.phone = "Please enter a valid phone number (at least 10 digits).";
     }
 
-    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+    if (!formData.email || !formData.email.trim()) {
+      newErrors.email = "Please enter your email address.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       newErrors.email = "Please enter a valid email address.";
     }
 
@@ -349,7 +351,7 @@ export default function ContactSection() {
                     {/* Email Field */}
                     <div>
                       <label className="block text-xs font-semibold text-[#102638] mb-1.5">
-                        Email Address <span className="text-[#536573] font-normal text-[11px]">(Optional but recommended)</span>
+                        Email Address <span className="text-red-500">*</span>
                       </label>
                       <div className="relative flex items-center">
                         <div className="absolute left-3.5 text-[#536573] pointer-events-none">
@@ -357,6 +359,7 @@ export default function ContactSection() {
                         </div>
                         <input
                           type="email"
+                          required
                           value={formData.email}
                           onChange={(e) => handleChange("email", e.target.value)}
                           placeholder="you@company.com"

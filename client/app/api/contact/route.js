@@ -52,7 +52,9 @@ export async function POST(request) {
       errors.phone = "Please provide a valid phone number (at least 10 digits).";
     }
 
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+    if (!email || typeof email !== "string" || !email.trim()) {
+      errors.email = "Please provide your email address.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
       errors.email = "Please provide a valid email address.";
     }
 
@@ -168,11 +170,7 @@ ${trimmedMessage}
           <tr style="border-bottom: 1px solid #f0f5f5;">
             <td style="padding: 10px 0; color: #536573; font-weight: 600;">Email:</td>
             <td style="padding: 10px 0; color: #102638;">
-              ${
-                trimmedEmail
-                  ? `<a href="mailto:${escapeHtml(trimmedEmail)}" style="color: #005B62; text-decoration: none; font-weight: 500;">${escapeHtml(trimmedEmail)}</a>`
-                  : `<span style="color: #8898aa; font-style: italic;">Not provided</span>`
-              }
+              <a href="mailto:${escapeHtml(trimmedEmail)}" style="color: #005B62; text-decoration: none; font-weight: 500;">${escapeHtml(trimmedEmail)}</a>
             </td>
           </tr>
           <tr style="border-bottom: 1px solid #f0f5f5;">
